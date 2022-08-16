@@ -32,7 +32,6 @@ jobs:
       uses: gradle/gradle-build-action@v2
       with:
         arguments: test
-        gradle-version: current
 
   build:
 
@@ -49,8 +48,7 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:
-        arguments: build
-        gradle-version: current
+        arguments: buildFatJar
     - name: Upload JAR
       uses: actions/upload-artifact@v3
       with:

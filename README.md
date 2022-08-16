@@ -19,6 +19,16 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
    ```bash
    sudo apt-get install openjdk-17-jdk
    ```
+1. Install SDKMAN:
+   ```bash
+   $ curl -s "https://get.sdkman.io" | bash
+   $ source "$HOME/.sdkman/bin/sdkman-init.sh"
+   ```
+1. Install Kotlin and Gradle:
+   ```bash
+   $ sdk install kotlin
+   $ sdk install gradle 7.5.1
+   ```
 1. Install [Visual Studio Code](https://code.visualstudio.com/) with the following extensions:
    - [Kotlin Language](https://marketplace.visualstudio.com/items?itemName=mathiasfrohlich.Kotlin)
    - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
