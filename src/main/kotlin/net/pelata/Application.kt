@@ -5,7 +5,7 @@ import io.ktor.server.netty.*
 import net.pelata.plugins.*
 
 fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+    embeddedServer(Netty, port = (System.getenv("PORT")?:"8080").toInt()) {
         configureTemplating()
         configureSerialization()
         configureMonitoring()
