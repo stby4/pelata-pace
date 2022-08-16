@@ -29,9 +29,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Run unit tests
-      uses: burrunan/gradle-cache-action@v1
+      uses: gradle/gradle-build-action@v2
       with:
-        job-id: jdk17
         arguments: test
 
   build:
@@ -47,7 +46,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Build with Gradle
-      uses: burrunan/gradle-cache-action@v1
+      uses: gradle/gradle-build-action@v2
       with:
-        job-id: jdk17
         arguments: build
