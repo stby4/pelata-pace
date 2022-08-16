@@ -23,17 +23,10 @@ fun Application.configureRouting() {
         exception<AuthorizationException> { call, cause ->
             call.respond(HttpStatusCode.Forbidden)
         }
-    
     }
     
 
     routing {
-        get("/") {
-            call.respondText("Hello World!")
-        }
-        get("/webjars") {
-            call.respondText("<script src='/webjars/jquery/jquery.js'></script>", ContentType.Text.Html)
-        }
         // Static plugin. Try to access `/static/index.html`
         static("/static") {
             resources("static")

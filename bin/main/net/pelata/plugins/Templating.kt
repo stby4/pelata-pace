@@ -10,13 +10,12 @@ import io.ktor.server.routing.*
 
 fun Application.configureTemplating() {
     install(Mustache) {
-        mustacheFactory = DefaultMustacheFactory("templates/mustache")
+        mustacheFactory = DefaultMustacheFactory("templates")
     }
 
     routing {
-        get("/html-mustache") {
-            call.respond(MustacheContent("index.hbs", mapOf("user" to MustacheUser(1, "user1"))))
+        get("/") {
+            call.respond(MustacheContent("index.hbs", {}))
         }
     }
 }
-data class MustacheUser(val id: Int, val name: String)
