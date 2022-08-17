@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "CarterOne";
+    src: url("CarterOne-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1 {
+    font-family: "CarterOne", sans-serif;
+}

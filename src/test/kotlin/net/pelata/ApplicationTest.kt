@@ -2,9 +2,6 @@ package net.pelata
 
 import io.ktor.server.routing.*
 import io.ktor.http.*
-import com.github.mustachejava.DefaultMustacheFactory
-import io.ktor.server.mustache.Mustache
-import io.ktor.server.mustache.MustacheContent
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.callloging.*
