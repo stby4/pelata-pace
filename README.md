@@ -53,3 +53,8 @@ The colours to be used for this website are:
 - Accent colour 1: `#1fad45` Green Pantone
 - Accent colour 2: `#477998` CG Blue
 
+# Attributions
+
+This project uses ressources from the following awesome projects:
+- Icons from [Reshot](https://www.reshot.com/).
+- Font from [Google Fonts](https://fonts.google.com/specimen/Carter+One?category=Sans+Serif,Display&preview.text=Pelata&preview.text_type=custom)
