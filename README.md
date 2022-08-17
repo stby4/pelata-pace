@@ -2,10 +2,14 @@
 
 Pelata is the Finnish and means "Play" => This project is just my playground.
 
+
 # Build status
+
 ![example workflow](https://github.com/stby4/pelata-pace/actions/workflows/gradle.yml/badge.svg)
 
+
 # Local setup
+
 > This project has been developed with Visual Studio Code on Ubuntu 20. Other IDEs and operating systems should work, but the setup might differ.
 
 1. Make sure that v17 of OpenJDK is installed:
@@ -39,4 +43,18 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
 # Styleguide
 
 ## Coulor palette
-![Colours](data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20version%3D%221.1%22%20viewBox%3D%220%200%20500%20250%22%20xml%3Aspace%3D%22preserve%22%3E%3Crect%20fill%3D%22%231fad45%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22166.66666666666666%22%20height%3D%22220%22%2F%3E%2C%3Crect%20fill%3D%22%23477998%22%20x%3D%22166.66666666666666%22%20y%3D%220%22%20width%3D%22166.66666666666666%22%20height%3D%22220%22%2F%3E%2C%3Crect%20fill%3D%22%23291f1e%22%20x%3D%22333.3333333333333%22%20y%3D%220%22%20width%3D%22166.66666666666666%22%20height%3D%22220%22%2F%3E%3C%2Fsvg%3E)
+
+_From [coolors.co](https://coolors.co/1fad45-477998-291f1e-fffffa)_
+![palette](https://user-images.githubusercontent.com/4112178/185063660-15405f4a-8d3b-4b34-84af-05962932f6ba.svg)
+
+The colours to be used for this website are:
+- Background: `#fffffa` Baby Powder
+- Text: `#291f1e` Raisin Black
+- Accent colour 1: `#1fad45` Green Pantone
+- Accent colour 2: `#477998` CG Blue
+
+# Attributions
+
+This project uses ressources from the following awesome projects:
+- Icons from [Reshot](https://www.reshot.com/).
+- Font from [Google Fonts](https://fonts.google.com/specimen/Carter+One?category=Sans+Serif,Display&preview.text=Pelata&preview.text_type=custom)
