@@ -2,6 +2,7 @@
 
 Pelata is the Finnish and means "Play" => This project is just my playground.
 
+✔️ Visit: https://www.pelata.net
 
 # Build status
 

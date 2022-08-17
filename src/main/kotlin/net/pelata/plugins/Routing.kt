@@ -13,10 +13,10 @@ import io.ktor.server.request.*
 fun Application.configureRouting() {
     install(AutoHeadResponse)
     install(StatusPages) {
-        exception<AuthenticationException> { call, cause ->
+        exception<AuthenticationException> { call, _ ->
             call.respond(HttpStatusCode.Unauthorized)
         }
-        exception<AuthorizationException> { call, cause ->
+        exception<AuthorizationException> { call, _ ->
             call.respond(HttpStatusCode.Forbidden)
         }
     }

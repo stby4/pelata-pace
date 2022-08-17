@@ -13,7 +13,11 @@
     <#include "/partials/header.ftl">
 
     <main>
-      <#include "/partials/form.ftl">
+    <#include "/partials/form.ftl">
+    <h2>Results</h2>
+    <p>
+      ${form.distance}
+    </p>
     </main>
     
     <#include "/partials/footer.ftl">
