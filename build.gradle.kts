@@ -32,8 +32,6 @@ dependencies {
     implementation("io.ktor:ktor-server-default-headers-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-conditional-headers-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-compression-jvm:$ktor_version")
-    implementation("io.ktor:ktor-server-webjars-jvm:$ktor_version")
-    implementation("org.webjars:jquery:3.6.0")
     implementation("io.ktor:ktor-server-sessions-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-auto-head-response-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-host-common-jvm:$ktor_version")
