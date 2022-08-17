@@ -1,4 +1,5 @@
-<hr>
+<footer>
 <i>
-Copyright © 2021 <a href="http://www.pelate.net">Pelata</a>
+Copyright © ${footer.year?string["0"]} <a href="http://www.pelate.net">Pelata</a>
 </i>
+</footer>
