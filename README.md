@@ -21,7 +21,7 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
    ```
    If not, use `apt` to install OpenJDK 17:
    ```bash
-   sudo apt-get install openjdk-17-jdk
+   sudo apt install openjdk-17-jre-headless
    ```
 1. Install SDKMAN:
    ```bash
