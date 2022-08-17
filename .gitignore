@@ -200,3 +200,5 @@ gradle-app.setting
 bin
 *.key
 *.csr
+*.crt
+*.pem

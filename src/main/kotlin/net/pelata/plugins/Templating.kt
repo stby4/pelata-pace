@@ -6,6 +6,7 @@ import freemarker.cache.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
 import io.ktor.server.routing.*
+import java.time.*
 
 fun Application.configureTemplating() {
     install(FreeMarker) {
@@ -14,7 +15,12 @@ fun Application.configureTemplating() {
 
     routing {
         get("/") {
-            call.respond(FreeMarkerContent("index.ftl", {}))
+            val date = LocalDate.now()
+            val footerData = Footer(date.getYear())
+
+            call.respond(FreeMarkerContent("index.ftl", mapOf("footer" to footerData)))
         }
     }
 }
+
+data class Footer(val year: Int)
