@@ -10,7 +10,6 @@ fun main() {
         configureSerialization()
         configureMonitoring()
         configureHTTP()
-        configureSecurity()
         configureRouting()
     }.start(wait = true)
 }
