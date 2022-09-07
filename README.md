@@ -34,8 +34,8 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
    $ sdk install kotlin
    ```
 1. Install [Visual Studio Code](https://code.visualstudio.com/) with the following extensions:
-   - [Kotlin Language](https://marketplace.visualstudio.com/items?itemName=mathiasfrohlich.Kotlin)
-   - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+   - [Kotlin](https://marketplace.visualstudio.com/items?itemName=fwcd.kotlin).
+   - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 1. Reload the VS Code window. Gradle should start to configure the project, which might take a couple of minutes.
 1. Once done, the Gradle tasks will show up in the sidebar of VS Code. Alternatively, they can be accessed using "Ctrl + Shift + P" -> "Tasks: Run Task".
 

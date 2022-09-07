@@ -22,7 +22,7 @@ fun Application.configureTemplating() {
         
         cookie<Security>("SECURITY") {
             cookie.path = "/"
-            cookie.maxAgeInSeconds = 60 * 60 * 2 // 2 hours
+            cookie.maxAgeInSeconds = (60 * 60 * 2).toLong() // 2 hours
             cookie.extensions["Secure"] = "true"
             transform(SessionTransportTransformerMessageAuthentication(secretSignKey))
         }
