@@ -12,7 +12,8 @@ class Split(val distance: Double, val time: Double, val precision : Int = 100) {
 
     fun negativeSplits(percentage: Double): List<Pair<Double, Double>> {
 
-        // TODO assert percentage 0 ... 1
+        // assert(percentage >= 0.0 && percentage <= 1.0)
+
         val avg = average()
         val diff = avg * percentage
         val slowest = avg + diff
@@ -21,10 +22,14 @@ class Split(val distance: Double, val time: Double, val precision : Int = 100) {
         val distances = DoubleArray(segments) { 1.0 }
         distances[distances.size - 1] = distance - floor(distance)
 
-        val interval = distance / precision
-        val intervalDiff = diff / precision
+        // val interval = distance / precision
+        val intervalDiff = -2.0 * avg / (percentage * distance * precision)
 
-        val times = distances.mapIndexed {idx, value -> if(1.0 == value) slowest - idx * intervalDiff * precision / 2 else fastest + ((value / precision) / 2) * intervalDiff}
+        print(distances)
+
+        val times = distances.mapIndexed {idx, value -> if(1.0 == value) slowest + idx * intervalDiff * precision / 2 else fastest - ((value / precision) / 2) * intervalDiff}
+
+        print(times)
 
         return distances zip times
     }
