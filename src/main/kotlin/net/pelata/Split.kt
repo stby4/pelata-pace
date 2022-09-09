@@ -15,22 +15,17 @@ class Split(val distance: Double, val time: Double, val precision : Int = 100) {
         // assert(percentage >= 0.0 && percentage <= 1.0)
 
         val avg = average()
-        val diff = avg * percentage
-        val slowest = avg + diff
-        val fastest = avg - diff
+        val slowest = avg + avg * percentage
         val segments = ceil(distance).toInt()
         val distances = DoubleArray(segments) { 1.0 }
         distances[distances.size - 1] = distance - floor(distance)
 
-        // val interval = distance / precision
-        val intervalDiff = -2.0 * avg / (percentage * distance * precision)
-
-        print(distances)
-
-        val times = distances.mapIndexed {idx, value -> if(1.0 == value) slowest + idx * intervalDiff * precision / 2 else fastest - ((value / precision) / 2) * intervalDiff}
-
-        print(times)
+        val step =  -2 * avg * percentage / (distance * precision)
+        val times = distances.mapIndexed {idx, distance -> calcSplitPace(idx, slowest, precision, distance, step)}
 
         return distances zip times
     }
+
+    fun calcSplitPace(idx: Int, slowest: Double, precision: Int, distance: Double, step: Double) : Double = slowest + (precision * step * (idx + distance/2))
+
 }
