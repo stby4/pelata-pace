@@ -6,7 +6,6 @@
     <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     <link rel="stylesheet" href="static/style.css">
-    <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
@@ -23,11 +22,19 @@
         </p>
         <h2>Negative splits</h2>
         <table>
+          <caption>Calculated negative splits for your optimal race in minutes per kilometer:</caption>
+          <thead>
+            <tr>
+              <#list result.distances as distance>
+                <td>${distance?string["0.0"]} km</td>
+              </#list>
+            </tr>
+          </thead>
           <tbody>
             <#list result.splits as splits>
               <tr>
                 <#list splits as pairs>
-                  <td>${pairs.second}</td>
+                  <td>${pairs?string["0.00"]}</td>
                 </#list>
               </tr>
             </#list>

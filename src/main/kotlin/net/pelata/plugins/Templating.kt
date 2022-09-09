@@ -94,7 +94,10 @@ fun Application.configureTemplating() {
                             add(split.negativeSplits(i/100.0))
                         }
                     }
-                    val resultData = Result(split.average(), splits)
+
+                    val distances = split.distances()
+
+                    val resultData = Result(split.average(), distances, splits)
 
                     content.put("form", formData)
                     content.put("result", resultData)
@@ -110,5 +113,5 @@ fun Application.configureTemplating() {
 
 data class Footer(val year: Int)
 data class Form(val distance: Double, val time: Double, val csrfToken: String = "")
-data class Result(val average: Double, val splits: List<List<Pair<Double, Double>>>)
+data class Result(val average: Double, val distances: List<Double>, val splits: List<List<Double>>)
 data class Security(val csrfToken: String = "")

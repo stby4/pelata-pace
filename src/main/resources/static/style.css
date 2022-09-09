@@ -30,7 +30,7 @@
 }
 
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "CarterOne", sans-serif;
 }
 
@@ -73,6 +73,49 @@ header .title {
     font-size: 4rem;
     color: var(--primary);
     line-height: 1;
+}
+
+section {
+    margin: 2rem 0;
+}
+
+.highlight {
+    font-family: "CarterOne", sans-serif;
+    font-size: 4em;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--secondary)
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+caption {
+    text-align: start;
+    padding-bottom: .4em;
+}
+
+thead {
+    background-color: #7b7b7b14;
+}
+
+table tr {
+    background-color: #7b7b7b14;
+}
+
+table tr:nth-child(odd) {
+    background-color: #7b7b7b1f;
+}
+
+table td {
+    padding: .4em;
 }
 
 
