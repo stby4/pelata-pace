@@ -12,6 +12,7 @@ import io.ktor.server.routing.*
 import io.ktor.util.*
 import java.security.*
 import java.time.*
+import net.pelata.Split
 
 fun Application.configureTemplating() {
     install(FreeMarker) {
@@ -46,7 +47,7 @@ fun Application.configureTemplating() {
 
             get {
                 val csrfToken = getCsrfToken()  
-                val formData = Form(5.0, csrfToken)
+                val formData = Form(5.0, 30.0, csrfToken)
                 content.put("form", formData)
                         
                 call.sessions.set(Security(csrfToken = csrfToken))
@@ -56,6 +57,7 @@ fun Application.configureTemplating() {
             post {
                 val formParameters = call.receiveParameters()
                 val distance = formParameters["distance"]?.toDouble()
+                val time = formParameters["time"]?.toDouble()
                 val formCsrf = formParameters["csrfToken"]
                 
                 val session = call.sessions.get<Security>() ?: Security(getCsrfToken())
@@ -66,9 +68,11 @@ fun Application.configureTemplating() {
                     return@post
                 }
 
-                when (distance) {
-                    null -> call.respondRedirect("/")
-                    else -> call.respondRedirect("/result?distance=$distance")
+                
+                if(null != distance && null != time) {
+                    call.respondRedirect("/result?distance=$distance&time=$time")
+                } else {
+                    call.respondRedirect("/")
                 }
             }
         }
@@ -76,18 +80,28 @@ fun Application.configureTemplating() {
         route("/result") {
             get {
                 val distance = call.request.queryParameters["distance"]?.toDouble()
+                val time = call.request.queryParameters["time"]?.toDouble()
 
-                when(distance) {
-                    null -> call.respondRedirect("/")
-                    else -> {
-                        val csrfToken = getCsrfToken()
-                        call.sessions.set(Security(csrfToken = csrfToken))
+                if(null != distance && null != time) {
+                    val csrfToken = getCsrfToken()
+                    call.sessions.set(Security(csrfToken = csrfToken))
 
-                        val formData = Form(distance, csrfToken)
-                        
-                        content.put("form", formData)
-                        call.respond(FreeMarkerContent("result.ftl", content))
+                    val formData = Form(distance, time, csrfToken)
+
+                    val split = Split(distance, time)
+                    val splits = buildList() {
+                        for(i in 1..10) {
+                            add(split.negativeSplits(i/100.0))
+                        }
                     }
+                    val resultData = Result(split.average(), splits)
+
+                    content.put("form", formData)
+                    content.put("result", resultData)
+                    call.respond(FreeMarkerContent("result.ftl", content))
+                }
+                else {
+                    call.respondRedirect("/")
                 }
             }
         }
@@ -95,5 +109,6 @@ fun Application.configureTemplating() {
 }
 
 data class Footer(val year: Int)
-data class Form(val distance: Double, val csrfToken: String = "")
+data class Form(val distance: Double, val time: Double, val csrfToken: String = "")
+data class Result(val average: Double, val splits: List<List<Pair<Double, Double>>>)
 data class Security(val csrfToken: String = "")

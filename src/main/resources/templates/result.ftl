@@ -13,11 +13,27 @@
     <#include "/partials/header.ftl">
 
     <main>
-    <#include "/partials/form.ftl">
-    <h2>Results</h2>
-    <p>
-      ${form.distance}
-    </p>
+      <section>
+        <#include "/partials/form.ftl">
+      </section>
+
+      <section>
+        <p>
+          <span class="highlight">${result.average} min/km</span> average pace
+        </p>
+        <h2>Negative splits</h2>
+        <table>
+          <tbody>
+            <#list result.splits as splits>
+              <tr>
+                <#list splits as pairs>
+                  <td>${pairs.second}</td>
+                </#list>
+              </tr>
+            </#list>
+          </tbody>
+        </table>
+      </section>
     </main>
     
     <#include "/partials/footer.ftl">
