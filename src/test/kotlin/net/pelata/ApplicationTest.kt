@@ -2,7 +2,6 @@ package net.pelata
 
 import io.ktor.server.routing.*
 import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.plugins.callloging.*
 import org.slf4j.event.*
@@ -22,15 +21,17 @@ import io.ktor.client.statement.*
 import kotlin.test.*
 import io.ktor.server.testing.*
 import net.pelata.plugins.*
+import net.pelata.features.pace.controller.*
 
 class ApplicationTest {
     @Test
     fun testRoot() = testApplication {
         application {
+            configureHTTP()
             configureRouting()
-            configureTemplating()
+            paceEndpoint()
         }
-        client.get("/").apply {
+        client.get("/pace").apply {
             assertEquals(HttpStatusCode.OK, status)
             // assertEquals("Hello World!", bodyAsText())
         }

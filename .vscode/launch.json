@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "kotlin",
+            "request": "launch",
+            "name": "Kotlin Launch",
+            "projectRoot": "${workspaceFolder}",
+            "mainClass": "net/pelata/ApplicationKt",
+            "preLaunchTask": "build",
+            "vmArguments": "net/pelata/ApplicationKt"
+        }
+    ]
+}
