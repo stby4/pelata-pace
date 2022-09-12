@@ -88,8 +88,12 @@ section {
     color: var(--secondary)
 }
 
+.wrapper {
+    overflow-x: auto;
+}
+
 table {
-    width: 100%;
+    min-width: 100%;
     table-layout: fixed;
     border: none;
     border-collapse: collapse;
@@ -105,6 +109,8 @@ caption {
 
 thead {
     background-color: #7b7b7b14;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 table tr {

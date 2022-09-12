@@ -8,7 +8,7 @@ class SplitTest {
     @Test
     fun testAverage() {
         val split = Split(10.0, 60.0)
-        val avg = split.average()
+        val avg = split.average
 
         assertEquals(6.0, avg, 0.0001)
     }
@@ -54,10 +54,10 @@ class SplitTest {
 
         val splits = split.negativeSplits(0.05)
 
-        assertEquals(6.07, splits[0], 0.01)
+        assertEquals(6.07, splits[0].duration, 0.01)
 
-        assertEquals(5.79, splits[5], 0.01)        
+        assertEquals(5.79, splits[5].duration, 0.01)        
 
-        assertEquals(5.518, splits[10], 0.01)
+        assertEquals(5.518, splits[10].duration, 0.01)
     }
 }

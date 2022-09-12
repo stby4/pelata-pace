@@ -18,28 +18,30 @@
 
       <section>
         <p>
-          <span class="highlight">${result.average?string["0.00"]} min/km</span> average pace
+          <span class="highlight">${result.average.minutes?string["##0"]}:${result.average.seconds?string["00"]} / km</span> average pace
         </p>
         <h2>Negative splits</h2>
-        <table>
-          <caption>Calculated negative splits for your optimal race in minutes per kilometer:</caption>
-          <thead>
-            <tr>
-              <#list result.distances as distance>
-                <td>${distance?string["0.0"]} km</td>
-              </#list>
-            </tr>
-          </thead>
-          <tbody>
-            <#list result.splits as splits>
+        <caption>Calculated negative splits for your optimal race in minutes and seconds per kilometer:</caption>
+        <div class="wrapper">
+          <table>
+            <thead>
               <tr>
-                <#list splits as pairs>
-                  <td>${pairs?string["0.00"]}</td>
+                <#list result.distances as distance>
+                  <td>${distance?string["0.0"]} km</td>
                 </#list>
               </tr>
-            </#list>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <#list result.splits as splits>
+                <tr>
+                  <#list splits as split>
+                    <td>${split.minutes?string["##0"]}:${split.seconds?string["00"]}</td>
+                  </#list>
+                </tr>
+              </#list>
+            </tbody>
+          </table>
+        </div>
       </section>
     </main>
     

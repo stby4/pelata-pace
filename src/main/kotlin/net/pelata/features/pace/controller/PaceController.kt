@@ -12,8 +12,9 @@ import io.ktor.server.sessions.*
 import io.ktor.util.*
 import java.security.*
 import java.time.*
-import net.pelata.features.pace.model.*
 import net.pelata.data.*
+import net.pelata.features.pace.data.SplitTime
+import net.pelata.features.pace.model.*
 import net.pelata.library.Security
 
 fun Application.paceEndpoint() {
@@ -85,8 +86,9 @@ fun Application.paceEndpoint() {
                             }
 
                     val distances = split.distances()
+                    val average = SplitTime(split.average)
 
-                    val resultData = Result(split.average(), distances, splits)
+                    val resultData = Result(average, distances, splits)
 
                     content.put("form", formData)
                     content.put("result", resultData)
