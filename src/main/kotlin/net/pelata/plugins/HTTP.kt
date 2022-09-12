@@ -7,6 +7,8 @@ import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
 
+const val DEFLATE_THRESHOLD : Long = 1024
+
 fun Application.configureHTTP() {
     install(DefaultHeaders)
     install(ConditionalHeaders)
@@ -16,7 +18,7 @@ fun Application.configureHTTP() {
         }
         deflate {
             priority = 10.0
-            minimumSize(1024) // condition
+            minimumSize(DEFLATE_THRESHOLD) // condition
         }
     }
 

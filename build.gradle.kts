@@ -5,7 +5,8 @@ val logback_version: String by project
 plugins {
     application
     kotlin("jvm") version "1.7.10"
-    id("io.ktor.plugin") version "2.1.0"
+    id("io.ktor.plugin") version "2.1.1"
+    id("io.gitlab.arturbosch.detekt") version "1.21.0"
 }
 
 group = "net.pelata"
@@ -39,4 +40,10 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+}
+
+detekt {
+    toolVersion = "1.21.0"
+    config = files("config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
 }
