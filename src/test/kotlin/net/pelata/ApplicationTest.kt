@@ -10,7 +10,6 @@ import io.ktor.server.request.*
 import io.ktor.server.plugins.defaultheaders.*
 import io.ktor.server.plugins.conditionalheaders.*
 import io.ktor.server.plugins.compression.*
-import io.ktor.server.webjars.*
 import java.time.*
 import io.ktor.server.sessions.*
 import io.ktor.server.plugins.autohead.*
