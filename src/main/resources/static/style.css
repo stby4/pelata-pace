@@ -7,7 +7,7 @@
 
 
 :root {
-    --background: #fffffa;
+    --background: #fff;
     --text: #291f1e;
     --textBright: #463634;
     --primary: #e1b03d;
@@ -19,7 +19,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #291f1e;
-        --text: #fffffa;;
+        --text: #fff;
     }
 }
 
@@ -30,7 +30,7 @@
 }
 
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
     font-family: "CarterOne", sans-serif;
 }
 
@@ -71,8 +71,58 @@ header .logo {
 header .title {
     margin: .1em .6em;
     font-size: 4rem;
+    font-style: italic;
     color: var(--primary);
     line-height: 1;
+}
+
+section {
+    margin: 2rem 0;
+}
+
+.highlight {
+    font-family: "CarterOne", sans-serif;
+    font-size: 4em;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--secondary)
+}
+
+.wrapper {
+    overflow-x: auto;
+}
+
+table {
+    min-width: 100%;
+    table-layout: fixed;
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+caption {
+    text-align: start;
+    padding-bottom: .4em;
+}
+
+thead {
+    background-color: #7b7b7b14;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+table tr {
+    background-color: #7b7b7b14;
+}
+
+table tr:nth-child(odd) {
+    background-color: #7b7b7b1f;
+}
+
+table td {
+    padding: .4em;
 }
 
 
