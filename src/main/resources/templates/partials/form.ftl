@@ -1,4 +1,4 @@
-<form action="/" method="post">
+<form action="/pace" method="post">
     <!-- distance -->
     <input
         type="number"

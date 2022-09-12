@@ -7,7 +7,7 @@
 
 
 :root {
-    --background: #fffffa;
+    --background: #fff;
     --text: #291f1e;
     --textBright: #463634;
     --primary: #e1b03d;
@@ -19,7 +19,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --background: #291f1e;
-        --text: #fffffa;;
+        --text: #fff;
     }
 }
 
@@ -71,6 +71,7 @@ header .logo {
 header .title {
     margin: .1em .6em;
     font-size: 4rem;
+    font-style: italic;
     color: var(--primary);
     line-height: 1;
 }
@@ -93,7 +94,7 @@ table {
     border: none;
     border-collapse: collapse;
     text-align: center;
-    border-radius: 2px;
+    border-radius: 10px;
     overflow: hidden;
 }
 

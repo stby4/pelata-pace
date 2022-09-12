@@ -1,4 +1,4 @@
-package net.pelata
+package net.pelata.features.pace.model
 
 import kotlin.math.*
 

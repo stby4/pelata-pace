@@ -1,6 +1,7 @@
 package net.pelata
 
 import kotlin.test.*
+import net.pelata.features.pace.model.*
 
 class SplitTest {
 
