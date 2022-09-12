@@ -1,6 +1,5 @@
 package net.pelata.features.pace.controller
 
-import freemarker.cache.*
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.freemarker.*
@@ -10,13 +9,19 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.util.*
-import java.security.*
-import java.time.*
-import net.pelata.data.*
+import java.security.SecureRandom
+import java.time.LocalDate
+import net.pelata.features.pace.data.Footer
+import net.pelata.features.pace.data.Form
+import net.pelata.features.pace.data.Result
 import net.pelata.features.pace.data.SplitTime
-import net.pelata.features.pace.model.*
+import net.pelata.features.pace.model.Split
 import net.pelata.library.Security
 
+const val DEFAULT_DISTANCE = 5.0
+const val DEFAULT_TIME = 30.0
+
+@Suppress("LongMethod")
 fun Application.paceEndpoint() {
 
     fun getCsrfToken(): String {
@@ -37,7 +42,7 @@ fun Application.paceEndpoint() {
         route("/pace") {
             get {
                 val csrfToken = getCsrfToken()
-                val formData = Form(5.0, 30.0, csrfToken)
+                val formData = Form(DEFAULT_DISTANCE, DEFAULT_TIME, csrfToken)
                 content.put("form", formData)
 
                 call.sessions.set(Security(csrfToken = csrfToken))
