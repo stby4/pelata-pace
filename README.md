@@ -48,10 +48,10 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
 From [coolors.co](https://coolors.co/5bc0be-8783d1-291f1e-ffffff)
 
 The colours to be used for this website are:
-- Background: `#fffffa` Baby Powder
+- Background: `#ffffff` White
 - Text: `#291f1e` Raisin Black
-- Accent colour 1: `#e1b03d` Goldenrof
-- Accent colour 2: `#477998` CG Blue
+- Accent colour 1: `#5bc0be` Maximum Blue Green
+- Accent colour 2: `#8783Dq` Middle Blue Purple
 
 # Attributions
 
