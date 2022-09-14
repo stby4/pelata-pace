@@ -42,7 +42,7 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
 
 # Styleguide
 
-## Coulor palette
+## Colour palette
 
 ![palette](https://user-images.githubusercontent.com/4112178/189963551-2579067c-6ffc-4c9b-8509-7c70218f8696.svg)
 From [coolors.co](https://coolors.co/5bc0be-8783d1-291f1e-ffffff)
