@@ -87,6 +87,7 @@ section {
     overflow-x: auto;
 }
 
+/* table */
 table {
     min-width: 100%;
     table-layout: fixed;
@@ -118,6 +119,38 @@ table tr:nth-child(odd) {
 
 table td {
     padding: .4em;
+}
+
+/* form */
+form {
+    display: flex;
+}
+
+input {
+    background: var(--background);
+    color: var(--text);
+    padding: .6em 1.2em;
+    border: none;
+    border-radius: 2em;
+    box-shadow: var(--secondary) .1em .1em .4em;
+}
+
+.submit {
+    box-shadow: var(--primary) .1em .1em .4em;
+}
+
+.input-group {
+    margin-right: 1rem;    
+    padding: 0 1.2em;
+    border-radius: 2em;
+    overflow: hidden;
+    box-shadow: var(--secondary) .1em .1em .4em;
+}
+
+.input-group input {
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 0;
 }
 
 
