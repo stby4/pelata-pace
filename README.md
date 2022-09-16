@@ -44,7 +44,7 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
 
 ## Colour palette
 
-![palette](https://user-images.githubusercontent.com/4112178/189963551-2579067c-6ffc-4c9b-8509-7c70218f8696.svg)
+![palette](https://user-images.githubusercontent.com/4112178/190750585-b3b4ccc4-5ff2-46a1-abfc-fb338e0741ea.svg)
 From [coolors.co](https://coolors.co/5bc0be-8783d1-0c0b1e-ffffff)
 
 The colours to be used for this website are:
