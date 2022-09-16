@@ -27,6 +27,10 @@
     }
 }
 
+html, body {
+    width: 100%;
+    min-width: 300px;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Signika", sans-serif;
@@ -56,7 +60,7 @@ footer {
 
 header a {
     text-decoration: none;
-    display: flex;
+    display: inline-flex;
     justify-content: start;
 }
 
@@ -65,10 +69,18 @@ header .logo {
 }
 
 header .title {
-    margin: .1em .5em;
+    margin: .16em .5em;
     font-size: 4rem;
     color: var(--text);
     line-height: 1;
+}
+
+header.small .logo {
+    height: 4rem;
+}
+
+header.small .title {
+    font-size: 3.2rem
 }
 
 section {
@@ -78,6 +90,7 @@ section {
 .highlight {
     font-family: "Signika", sans-serif;
     font-size: 4em;
+    line-height: 1.2em;
     font-variation-settings: "wght" 700;
     font-weight: bold;
     color: var(--primary)
@@ -105,6 +118,7 @@ caption {
 
 thead {
     background-color: #7b7b7b14;
+    color: var(--secondary);
     font-weight: bold;
     white-space: nowrap;
 }
@@ -124,42 +138,78 @@ table td {
 /* form */
 form {
     display: flex;
+    flex-wrap: wrap;
+}
+
+form > :first-child {
+    margin-left: 0;
+}
+
+form > :last-child {
+    margin-right: 0;
 }
 
 input {
-    background: var(--background);
+    background: transparent;
     color: var(--text);
     padding: .6em 1.2em;
     border: none;
     border-radius: 2em;
-    box-shadow: var(--secondary) .1em .1em .4em;
+    font-size: 1em;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+label {
+    padding: 1.2em 1.2em 1.2em 0;
+    font-size: 1em;
 }
 
 .submit {
-    box-shadow: var(--primary) .1em .1em .4em;
+    box-shadow: var(--primary) 0 0 .4em;
+    transition: box-shadow 400ms;
+}
+
+.submit:hover, .submit:focus {
+    box-shadow: var(--primary) 0 0 .6em;
 }
 
 .input-group {
-    margin-right: 1rem;    
-    padding: 0 1.2em;
+    margin: 1rem;
     border-radius: 2em;
-    overflow: hidden;
-    box-shadow: var(--secondary) .1em .1em .4em;
+    box-shadow: var(--secondary) 0 0 .4em;
+    transition: box-shadow 400ms;
+    white-space: nowrap;
 }
 
-.input-group input {
-    box-shadow: none;
-    border-radius: 0;
-    padding-left: 0;
+.submit-group {
+    margin: 1rem;
 }
 
+.input-group:hover, .input-group:focus-within {
+    box-shadow: var(--secondary) 0 0 .6em;
+}
 
-@media screen and (max-width: 400px) {
-    header .logo {
+/* Responsive rules */
+@media screen and (max-width: 420px) {
+    header .logo, header.small .logo {
         height: 3rem;
     }
 
-    header .title {
+    header .title, header.small .title {
         font-size: 2.4rem;
+    }
+
+    form {
+        flex-direction: column;
+        align-content: flex-start;
+    }
+
+    form > :nth-child(n) {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

@@ -6,11 +6,19 @@ import net.pelata.features.pace.model.*
 class SplitTest {
 
     @Test
-    fun testAverage() {
+    fun testAveragePace() {
         val split = Split(10.0, 60.0)
-        val avg = split.average
+        val avg = split.averagePace
 
         assertEquals(6.0, avg, 0.0001)
+    }
+
+    @Test
+    fun testAverageSpeed() {
+        val split = Split(10.0, 60.0)
+        val spd = split.averageSpeed
+
+        assertEquals(10.0, spd, 0.0001)
     }
 
     @Test
