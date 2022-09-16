@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "CarterOne";
-    src: url("CarterOne-Regular.ttf");
+    font-family: "Signika";
+    src: url("SignikaNegative-VariableFont_wght.ttf");
     font-weight: normal;
     font-style: normal;
 }
@@ -9,10 +9,8 @@
 :root {
     --background: #fff;
     --text: #291f1e;
-    --textBright: #463634;
-    --primary: #e1b03d;
-    --secondary: #477998;
-    --secondaryDark: #2e4d61;
+    --primary: #5bc0be;
+    --secondary: #8783d1;
     --containerMaxWidth: 800px;
 }
 
@@ -29,9 +27,15 @@
     }
 }
 
+html, body {
+    width: 100%;
+    min-width: 300px;
+}
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "CarterOne", sans-serif;
+    font-family: "Signika", sans-serif;
+    font-variation-settings: "wght" 600;
+    font-weight: bold;
 }
 
 body {
@@ -50,17 +54,13 @@ header,
 main,
 footer {
     max-width: var(--containerMaxWidth);
-    margin: 0 auto;
-    padding: 2rem 4vw;
+    margin: 3rem auto;
+    padding: 0 4vw;
 }
 
-.jumbotron {
-    background: var(--secondary);
-    background: linear-gradient(140deg, var(--secondaryDark) 0%, var(--secondaryDark) 10%, var(--secondary) 90%, var(--secondary) 100%);
-}
-
-header {
-    display: flex;
+header a {
+    text-decoration: none;
+    display: inline-flex;
     justify-content: start;
 }
 
@@ -69,11 +69,18 @@ header .logo {
 }
 
 header .title {
-    margin: .1em .6em;
+    margin: .16em .5em;
     font-size: 4rem;
-    font-style: italic;
-    color: var(--primary);
+    color: var(--text);
     line-height: 1;
+}
+
+header.small .logo {
+    height: 4rem;
+}
+
+header.small .title {
+    font-size: 3.2rem
 }
 
 section {
@@ -81,17 +88,19 @@ section {
 }
 
 .highlight {
-    font-family: "CarterOne", sans-serif;
+    font-family: "Signika", sans-serif;
     font-size: 4em;
-    font-style: italic;
+    line-height: 1.2em;
+    font-variation-settings: "wght" 700;
     font-weight: bold;
-    color: var(--secondary)
+    color: var(--primary)
 }
 
 .wrapper {
     overflow-x: auto;
 }
 
+/* table */
 table {
     min-width: 100%;
     table-layout: fixed;
@@ -109,6 +118,7 @@ caption {
 
 thead {
     background-color: #7b7b7b14;
+    color: var(--secondary);
     font-weight: bold;
     white-space: nowrap;
 }
@@ -125,13 +135,81 @@ table td {
     padding: .4em;
 }
 
+/* form */
+form {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-@media screen and (max-width: 400px) {
-    header .logo {
+form > :first-child {
+    margin-left: 0;
+}
+
+form > :last-child {
+    margin-right: 0;
+}
+
+input {
+    background: transparent;
+    color: var(--text);
+    padding: .6em 1.2em;
+    border: none;
+    border-radius: 2em;
+    font-size: 1em;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+label {
+    padding: 1.2em 1.2em 1.2em 0;
+    font-size: 1em;
+}
+
+.submit {
+    box-shadow: var(--primary) 0 0 .4em;
+    transition: box-shadow 400ms;
+}
+
+.submit:hover, .submit:focus {
+    box-shadow: var(--primary) 0 0 .6em;
+}
+
+.input-group {
+    margin: 1rem;
+    border-radius: 2em;
+    box-shadow: var(--secondary) 0 0 .4em;
+    transition: box-shadow 400ms;
+    white-space: nowrap;
+}
+
+.submit-group {
+    margin: 1rem;
+}
+
+.input-group:hover, .input-group:focus-within {
+    box-shadow: var(--secondary) 0 0 .6em;
+}
+
+/* Responsive rules */
+@media screen and (max-width: 420px) {
+    header .logo, header.small .logo {
         height: 3rem;
     }
 
-    header .title {
+    header .title, header.small .title {
         font-size: 2.4rem;
+    }
+
+    form {
+        flex-direction: column;
+        align-content: flex-start;
+    }
+
+    form > :nth-child(n) {
+        margin-left: 0;
+        margin-right: 0;
     }
 }

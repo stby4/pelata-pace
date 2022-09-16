@@ -51,11 +51,10 @@ The colours to be used for this website are:
 - Background: `#ffffff` White
 - Text: `#291f1e` Raisin Black
 - Accent colour 1: `#5bc0be` Maximum Blue Green
-- Accent colour 2: `#8783Dq` Middle Blue Purple
+- Accent colour 2: `#8783d1` Middle Blue Purple
 
 
 # Attributions
 
 This project uses ressources from the following awesome projects:
-- Icons from [Reshot](https://www.reshot.com/).
-- Font from [Google Fonts](https://fonts.google.com/specimen/Carter+One?category=Sans+Serif,Display&preview.text=Pelata&preview.text_type=custom)
+- Font from [Google Fonts](https://fonts.google.com/specimen/Signika+Negative/about?category=Sans+Serif&subset=latin&preview.text=Pelata&preview.text_type=custom)

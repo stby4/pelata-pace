@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Pelata</title>
-    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
-    <link rel="icon" type="image/png" href="/static/favicon.png">
-    <link rel="stylesheet" href="/static/style.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-  </head>
-  <body>
-    <#include "/partials/header.ftl">
+<#-- @ftlvariable name="form" type="net.pelata.features.pace.data.Form" -->
+<#-- @ftlvariable name="footer" type="net.pelata.features.pace.data.Footer" -->
 
-    <main>
-      <section>
-        <h2>Calculate your pace now</h2>
-        <#include "/partials/form.ftl">
-        <p>Enter your race distance and goal time to get the required average pace and as well as possible negative splits.
-      </section>
-    </main>
-    
-    <#include "/partials/footer.ftl">
-  </body>
-</html>
+<#import "_layout.ftl" as layout>
+<#import "/partials/form.ftl" as formpartial>
+
+<@layout.doc>
+  <main>
+    <section>
+      <h2>Calculate your pace now</h2>
+      <@formpartial.pace formdata=form />
+      <p>Enter your race distance and goal time to get the required average pace and as well as possible negative splits.
+      <p>Why don't you try to run a <a href="/pace/result?distance=42.195&time=119.67">marathon in 1:59:40,2</a> like Eliud Kipchoge did in 2019?</div>
+    </section>
+  </main>
+</@layout.doc>
