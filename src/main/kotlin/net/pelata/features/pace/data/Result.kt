@@ -6,6 +6,6 @@ data class Result(
     val average: SplitTime,
     val averageSpeed: Double,
     val distances: List<Double>,
-    val splits: List<List<SplitTime>>
-
-    )
+    val splits: List<List<SplitTime>>,
+    val isFast: Boolean
+)

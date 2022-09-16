@@ -15,7 +15,7 @@
       <p>
         <span class="highlight">${result.average.minutes?string["##0"]}:${result.average.seconds?string["00"]} / km</span>
         <br/>
-        Average pace. That's equal to a speed of ${result.averageSpeed?string["##0.0"]} km/h.
+        Average pace. That's equal to <#if result.isFast()>an incredible speed<#else>a speed</#if> of ${result.averageSpeed?string["##0.0"]} km/h.
       </p>
       <h2>Negative splits</h2>
       <p>

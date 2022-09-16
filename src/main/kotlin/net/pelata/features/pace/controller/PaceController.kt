@@ -93,8 +93,9 @@ fun Application.paceEndpoint() {
                     val distances = split.distances()
                     val averagePace = SplitTime(split.averagePace)
                     val averageSpeed = split.averageSpeed
+                    val isFast = averageSpeed > 18
 
-                    val resultData = Result(averagePace, averageSpeed, distances, splits)
+                    val resultData = Result(averagePace, averageSpeed, distances, splits, isFast)
 
                     content.put("form", formData)
                     content.put("result", resultData)
