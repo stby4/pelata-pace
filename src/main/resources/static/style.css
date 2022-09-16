@@ -8,7 +8,7 @@
 
 :root {
     --background: #fff;
-    --text: #291f1e;
+    --text: #0c0b1e;
     --primary: #5bc0be;
     --secondary: #8783d1;
     --containerMaxWidth: 800px;
@@ -16,7 +16,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background: #291f1e;
+        --background: #0c0b1e;
         --text: #fff;
     }
 }
@@ -174,7 +174,7 @@ label {
 }
 
 .submit:hover, .submit:focus {
-    box-shadow: var(--primary) 0 0 .6em;
+    box-shadow: var(--primary) 0 0 .8em;
 }
 
 .input-group {
@@ -190,7 +190,7 @@ label {
 }
 
 .input-group:hover, .input-group:focus-within {
-    box-shadow: var(--secondary) 0 0 .6em;
+    box-shadow: var(--secondary) 0 0 .8em;
 }
 
 /* Responsive rules */

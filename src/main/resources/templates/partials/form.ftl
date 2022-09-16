@@ -1,7 +1,7 @@
 <#-- @ftlvariable name="formdata" type="net.pelata.features.pace.data.Form" -->
 
 <#macro pace formdata>
-    <form action="/pace" method="post">
+    <form action="/pace/result" method="get">
         <#-- distance -->
         <div class="input-group">
             <input
@@ -36,8 +36,7 @@
             <label for="time">minutes</label>
         </div>
 
-        <#-- CSRF and submit -->
-        <input type="hidden" name="csrfToken" value="${form.csrfToken}">
+        <#-- submit -->
         <div class="submit-group">
             <input class="submit" type="submit" value="Calculate">
         </div>

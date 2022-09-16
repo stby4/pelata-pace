@@ -11,9 +11,7 @@ import io.ktor.server.response.*
 import io.ktor.server.request.*
 import io.ktor.server.freemarker.*
 import freemarker.cache.*
-import io.ktor.server.sessions.*
 import io.ktor.util.*
-import net.pelata.library.*
 
 fun Application.configureRouting() {
     install(AutoHeadResponse)
@@ -27,16 +25,6 @@ fun Application.configureRouting() {
     }
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
-    }
-    install(Sessions) {
-        val secretSignKey = hex(System.getenv("SIGN_KEY")?:"6819b57a326945c1968f45236589")
-        
-        cookie<Security>("SECURITY") {
-            cookie.path = "/"
-            cookie.maxAgeInSeconds = (60 * 60 * 2).toLong() // 2 hours
-            cookie.extensions["Secure"] = "true"
-            transform(SessionTransportTransformerMessageAuthentication(secretSignKey))
-        }
     }
     
 
