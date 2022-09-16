@@ -12,7 +12,6 @@ import io.ktor.server.request.*
 import io.ktor.server.freemarker.*
 import freemarker.cache.*
 import io.ktor.util.*
-import net.pelata.library.*
 
 fun Application.configureRouting() {
     install(AutoHeadResponse)
