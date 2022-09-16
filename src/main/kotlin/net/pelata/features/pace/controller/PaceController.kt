@@ -20,6 +20,7 @@ import net.pelata.library.Security
 
 const val DEFAULT_DISTANCE = 5.0
 const val DEFAULT_TIME = 30.0
+const val IS_FAST_THRESHOLD = 18.0
 
 @Suppress("LongMethod")
 fun Application.paceEndpoint() {
@@ -93,7 +94,7 @@ fun Application.paceEndpoint() {
                     val distances = split.distances()
                     val averagePace = SplitTime(split.averagePace)
                     val averageSpeed = split.averageSpeed
-                    val isFast = averageSpeed > 18
+                    val isFast = averageSpeed > IS_FAST_THRESHOLD
 
                     val resultData = Result(averagePace, averageSpeed, distances, splits, isFast)
 
