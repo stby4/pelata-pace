@@ -11,6 +11,8 @@
     --text: #0c0b1e;
     --primary: #5bc0be;
     --secondary: #8783d1;
+    --linkColor: #0066cc;
+    --linkColorVisited: #551a8b;
     --containerMaxWidth: 800px;
 }
 
@@ -18,6 +20,8 @@
     :root {
         --background: #0c0b1e;
         --text: #fff;
+        --linkColor: #6d9bc9;
+        --linkColorVisited: #9469bc;
     }
 }
 
@@ -48,6 +52,14 @@ body {
 
 p {
     line-height: 1.2em;
+}
+
+a {
+    color: var(--linkColor);
+}
+
+a:visited {
+    color: var(--linkColorVisited);
 }
 
 header,
