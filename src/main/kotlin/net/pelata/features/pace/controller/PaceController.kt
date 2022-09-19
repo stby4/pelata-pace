@@ -73,7 +73,7 @@ fun Application.paceEndpoint() {
                     } else {
                         call.respondRedirect("/")
                     }
-                } catch (e: Exception) {
+                } catch (e: NumberFormatException) {
                     throw RequestValidationException(e, listOf("Invalid request parameters."))
                 }
             }
