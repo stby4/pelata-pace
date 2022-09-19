@@ -3,42 +3,58 @@
 <#macro pace formdata>
     <form action="/pace/result" method="get">
         <#-- distance -->
-        <div class="input-group">
-            <input
-                type="text"
-                inputmode="decimal"
-                id="distance"
-                name="distance"
-                placeholder="0.0"
-                size="5"
-                required
-                value="${(formdata.distance)!5.0}"
-                spellcheck="false"
-                autocomplete="off"
-            >
-            <label for="distance">km</label>
+        <div>
+            <div <#if formdata.errors?? && formdata.errors['.distance']??>class="input-group error"<#else>class="input-group"</#if>>
+                <input
+                    type="text"
+                    inputmode="decimal"
+                    id="distance"
+                    name="distance"
+                    placeholder="0.0"
+                    size="8"
+                    required
+                    value="${(formdata.distance)!5.0}"
+                    spellcheck="false"
+                    autocomplete="off"
+                >
+                <label for="distance">km</label>
+            </div>
+            <#if formdata.errors?? && formdata.errors['.distance']??>
+                <p class="error-message">
+                    ${formdata.errors['.distance']?cap_first}.
+                </p>
+            </#if>
         </div>
 
         <#-- goal time -->
-        <div class="input-group">
-            <input
-                type="text"
-                inputmode="decimal"
-                id="time"
-                name="time"
-                placeholder="0.0"
-                size="5"
-                required
-                value="${(formdata.time)!30.0}"
-                spellcheck="false"
-                autocomplete="off"
-            >
-            <label for="time">minutes</label>
+        <div>
+            <div <#if formdata.errors?? && formdata.errors['.time']??>class="input-group error"<#else>class="input-group"</#if>>
+                <input
+                    type="text"
+                    inputmode="decimal"
+                    id="time"
+                    name="time"
+                    placeholder="0.0"
+                    size="8"
+                    required
+                    value="${(formdata.time)!30.0}"
+                    spellcheck="false"
+                    autocomplete="off"
+                >
+                <label for="time">minutes</label>
+            </div>
+            <#if formdata.errors?? && formdata.errors['.time']??>
+                <p class="error-message">
+                    ${formdata.errors['.time']?cap_first}.
+                </p>
+            </#if>
         </div>
 
         <#-- submit -->
-        <div class="submit-group">
-            <input class="submit" type="submit" value="Calculate">
+        <div>
+            <div class="submit-group">
+                <input class="submit" type="submit" value="Calculate">
+            </div>
         </div>
     </form>
 </#macro>

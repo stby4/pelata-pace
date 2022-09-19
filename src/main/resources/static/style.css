@@ -153,24 +153,26 @@ form {
     flex-wrap: wrap;
 }
 
-form > :first-child {
+form > :first-child .input-group {
     margin-left: 0;
 }
 
-form > :last-child {
+form > :last-child .input-group {
     margin-right: 0;
 }
 
-input {
+input, .input, .input:visited {
+    display: inline-block;
     background: transparent;
     color: var(--text);
     padding: .6em 1.2em;
     border: none;
     border-radius: 2em;
     font-size: 1em;
+    text-decoration: none;
 }
 
-input:focus {
+input:focus, .input:focus {
     border: none;
     outline: none;
 }
@@ -197,12 +199,20 @@ label {
     white-space: nowrap;
 }
 
+.input-group.error {
+    box-shadow: red 0 0 .4em;
+}
+
 .submit-group {
     margin: 1rem;
 }
 
 .input-group:hover, .input-group:focus-within {
     box-shadow: var(--secondary) 0 0 .8em;
+}
+
+.error-message {
+    text-align: center;
 }
 
 /* Responsive rules */
@@ -220,7 +230,7 @@ label {
         align-content: flex-start;
     }
 
-    form > :nth-child(n) {
+    form > :nth-child(n) div {
         margin-left: 0;
         margin-right: 0;
     }

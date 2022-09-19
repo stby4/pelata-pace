@@ -17,7 +17,7 @@
 
         <#nested>
         
-        <@footerpartial.footer footerdata=footer />
+        <@footerpartial.footer />
     </body>
     </html>
 </#macro>
