@@ -18,14 +18,18 @@ import io.ktor.util.*
 fun Application.configureRouting() {
     install(AutoHeadResponse)
     install(StatusPages) {
-        exception<AuthenticationException> { call, _ ->
-            call.respond(HttpStatusCode.Unauthorized)
-        }
-        exception<AuthorizationException> { call, _ ->
-            call.respond(HttpStatusCode.Forbidden)
-        }
+        // exception<AuthenticationException> { call, _ ->
+        //     call.respond(HttpStatusCode.Unauthorized, FreeMarkerContent("error.ftl", mapOf<String, String>("message" to "You are not authenticated to view this page.")))
+        // }
+        // exception<AuthorizationException> { call, _ ->
+        //     call.respond(HttpStatusCode.Forbidden, FreeMarkerContent("error.ftl", mapOf<String, String>("message" to "You are not authorised to view this page.")))
+        // }
         exception<RequestValidationException> { call, cause ->
-            call.respond(HttpStatusCode.BadRequest, cause.reasons.joinToString())
+            // call.respond(HttpStatusCode.BadRequest, cause.reasons.joinToString())
+            call.respond(HttpStatusCode.BadRequest, FreeMarkerContent("error.ftl", mapOf<String, String>("message" to cause.reasons.joinToString())))
+        }
+        status(HttpStatusCode.NotFound) {call, status ->
+            call.respond(status, FreeMarkerContent("error.ftl", mapOf<String, Any>("message" to "This site does not exist.", "status" to status)))
         }
     }
     install(RequestValidation)
@@ -37,7 +41,7 @@ fun Application.configureRouting() {
     routing {
         route("/") {
             get {
-                call.respondRedirect("/pace")
+                call.respondRedirect("/pace", true)
             }
         }
         // Static plugin. Try to access `/static/index.html`
