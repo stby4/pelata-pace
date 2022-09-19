@@ -5,6 +5,8 @@ import io.ktor.http.*
 import java.time.*
 import io.ktor.server.plugins.autohead.*
 import io.ktor.server.plugins.statuspages.*
+import io.ktor.server.plugins.requestvalidation.RequestValidation
+import io.ktor.server.plugins.requestvalidation.RequestValidationException
 import io.ktor.server.http.content.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -22,7 +24,11 @@ fun Application.configureRouting() {
         exception<AuthorizationException> { call, _ ->
             call.respond(HttpStatusCode.Forbidden)
         }
+        exception<RequestValidationException> { call, cause ->
+            call.respond(HttpStatusCode.BadRequest, cause.reasons.joinToString())
+        }
     }
+    install(RequestValidation)
     install(FreeMarker) {
         templateLoader = ClassTemplateLoader(this::class.java.classLoader, "templates")
     }
