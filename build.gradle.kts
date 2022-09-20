@@ -47,3 +47,11 @@ detekt {
     config = files("config/detekt/detekt.yml")
     buildUponDefaultConfig = true
 }
+
+sourceSets {
+    main {
+        resources {
+            srcDirs(".aws")
+        }
+    }
+}
