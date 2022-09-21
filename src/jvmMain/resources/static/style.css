@@ -169,12 +169,17 @@ input, .input, .input:visited {
     border: none;
     border-radius: 2em;
     font-size: 1em;
+    line-height: 1em;
     text-decoration: none;
 }
 
 input:focus, .input:focus {
     border: none;
     outline: none;
+}
+
+input[inputmode="numeric"], input[inputmode="decimal"] {
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
 }
 
 label {
@@ -201,6 +206,19 @@ label {
 
 .input-group.error {
     box-shadow: red 0 0 .4em;
+}
+
+.input-group.time input {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.input-group.time input:first-of-type {
+    padding-left: 1.2em;
+}
+
+.input-group.time input:last-of-type {
+    padding-right: 1.2em;
 }
 
 .submit-group {
