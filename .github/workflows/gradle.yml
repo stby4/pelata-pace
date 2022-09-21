@@ -23,11 +23,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
+
     - name: Run detekt and unit tests
       uses: gradle/gradle-build-action@v2
       with:
@@ -41,19 +43,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
+
     - name: Build with Gradle
       uses: gradle/gradle-build-action@v2
       with:
         arguments: buildFatJar
+
     - name: Copy jar to work dir
       run: mv build/libs/net.pelata.pace-all.jar net.pelata.pace-all.jar
+
     - name: Create bundle for EB
       run: zip -9 -r -q net.pelata.pace-bundle.zip net.pelata.pace-all.jar .platform
+
     - name: Upload JAR
       uses: actions/upload-artifact@v3
       with:
@@ -71,6 +78,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: pelata-zip
+        
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v20
       with:
