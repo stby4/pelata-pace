@@ -19,5 +19,6 @@
         
         <@footerpartial.footer />
     </body>
+    <script src="/static/main.js"></script>
     </html>
 </#macro>

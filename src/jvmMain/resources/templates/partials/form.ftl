@@ -1,7 +1,6 @@
 <#-- @ftlvariable name="formdata" type="net.pelata.features.pace.data.Form" -->
 
 <#macro pace formdata>
-    <script src="/static/paceform.js"></script>
     <form action="/pace/result" method="get">
         <#-- distance -->
         <div>
