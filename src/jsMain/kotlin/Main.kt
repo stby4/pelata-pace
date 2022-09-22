@@ -2,13 +2,14 @@ package net.pelata.frontend
 
 import kotlinx.browser.document
 
-fun helloWorld(name: String) {
-    console.log("Hello ${name}")
-}
-
-
 fun main() {
-    document.addEventListener("DOMContentLoaded", {
-        helloWorld("kotlin.js")
-    })
+    document.addEventListener(
+            "DOMContentLoaded",
+            {
+                // Register time input
+                val timeInputFields =
+                        document.querySelectorAll(".input-group.time input[inputmode=\"numeric\"]")
+                timeInput(timeInputFields)
+            }
+    )
 }

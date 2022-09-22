@@ -180,6 +180,7 @@ input:focus, .input:focus {
 
 input[inputmode="numeric"], input[inputmode="decimal"] {
     font-family: 'Consolas', 'Courier New', Courier, monospace;
+    text-align: end;
 }
 
 label {

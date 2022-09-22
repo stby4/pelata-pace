@@ -16,6 +16,7 @@
                     value="${(formdata.distance)!5.0}"
                     spellcheck="false"
                     autocomplete="off"
+                    enterkeyhint="done"
                 >
                 <label for="distance">km</label>
             </div>
@@ -40,6 +41,7 @@
                     <#--  value="${(formdata.time)!30.0}"  -->
                     spellcheck="false"
                     autocomplete="off"
+                    enterkeyhint="done"
                 >
                 :
                 <input
@@ -53,6 +55,7 @@
                     <#--  value="${(formdata.time)!30.0}"  -->
                     spellcheck="false"
                     autocomplete="off"
+                    enterkeyhint="done"
                 >
                 :
                 <input
@@ -66,6 +69,7 @@
                     <#--  value="${(formdata.time)!30.0}"  -->
                     spellcheck="false"
                     autocomplete="off"
+                    enterkeyhint="done"
                 >
                 <label for="seconds">time</label>
             </div>
