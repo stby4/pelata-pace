@@ -12,6 +12,8 @@
                     name="distance"
                     placeholder="0.0"
                     size="8"
+                    pattern="^[0-9,]+\.?[0-9]*$"
+                    title="Distance in kilometers. Decimal values are allowed."
                     required
                     value="${(formdata.distance)!5.0}"
                     spellcheck="false"
@@ -37,7 +39,8 @@
                     name="h"
                     placeholder="hh"
                     size="2"
-                    required
+                    pattern="^[0-9]{0,2}$"
+                    title="Target time hours. Values from 0 to 99 are valid. Optional."
                     <#--  value="${(formdata.time)!30.0}"  -->
                     spellcheck="false"
                     autocomplete="off"
@@ -51,7 +54,8 @@
                     name="m"
                     placeholder="mm"
                     size="2"
-                    required
+                    pattern="^[0-9]{0,2}$"
+                    title="Target time minutes. Values from 0 to 99 are valid. Optional."
                     <#--  value="${(formdata.time)!30.0}"  -->
                     spellcheck="false"
                     autocomplete="off"
@@ -65,7 +69,8 @@
                     name="s"
                     placeholder="ss"
                     size="2"
-                    required
+                    pattern="^[0-9]{0,2}$"
+                    title="Target time seconds. Values from 0 to 99 are valid. Optional."
                     <#--  value="${(formdata.time)!30.0}"  -->
                     spellcheck="false"
                     autocomplete="off"
