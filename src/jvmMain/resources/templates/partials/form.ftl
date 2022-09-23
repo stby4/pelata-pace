@@ -1,7 +1,7 @@
 <#-- @ftlvariable name="formdata" type="net.pelata.features.pace.data.Form" -->
 
 <#macro pace formdata>
-    <form action="/pace/result" method="get">
+    <form id="paceform" action="/pace/result" method="get">
         <#-- distance -->
         <div>
             <div <#if formdata.errors?? && formdata.errors['.distance']??>class="input-group error"<#else>class="input-group"</#if>>
@@ -41,7 +41,7 @@
                     size="2"
                     pattern="^[0-9]{0,2}$"
                     title="Target time hours. Values from 0 to 99 are valid. Optional."
-                    <#--  value="${(formdata.time)!30.0}"  -->
+                    value="${(formdata.hours?string['00'])!00}"
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"
@@ -55,8 +55,8 @@
                     placeholder="mm"
                     size="2"
                     pattern="^[0-9]{0,2}$"
-                    title="Target time minutes. Values from 0 to 99 are valid. Optional."
-                    <#--  value="${(formdata.time)!30.0}"  -->
+                    title="Target time minutes. Values from 0 to 59 are valid. Optional."
+                    value="${(formdata.minutes?string['00'])!30}"
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"
@@ -70,8 +70,8 @@
                     placeholder="ss"
                     size="2"
                     pattern="^[0-9]{0,2}$"
-                    title="Target time seconds. Values from 0 to 99 are valid. Optional."
-                    <#--  value="${(formdata.time)!30.0}"  -->
+                    title="Target time seconds. Values from 0 to 59 are valid. Optional."
+                    value="${(formdata.seconds?string['00'])!00}"
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"

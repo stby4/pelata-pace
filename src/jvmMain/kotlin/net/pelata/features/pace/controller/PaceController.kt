@@ -16,9 +16,10 @@ import net.pelata.features.pace.data.Result
 import net.pelata.features.pace.data.SplitTime
 import net.pelata.features.pace.data.validatePaceRequest
 import net.pelata.features.pace.model.Split
+import kotlin.math.floor
+import kotlin.math.ceil
 
 const val DEFAULT_DISTANCE = 5.0
-const val DEFAULT_TIME = 30.0
 const val IS_FAST_THRESHOLD = 18.0
 
 @Suppress("LongMethod")
@@ -34,7 +35,7 @@ fun Application.paceEndpoint() {
 
         route("/pace") {
             get {
-                val formData = Form(DEFAULT_DISTANCE, DEFAULT_TIME)
+                val formData = Form(DEFAULT_DISTANCE)
                 content.put("form", formData)
 
                 call.respond(FreeMarkerContent("index.ftl", content))
@@ -51,6 +52,10 @@ fun Application.paceEndpoint() {
                     val time =
                             (call.request.queryParameters["time"]!!.filterNot { it == ',' })
                                     .toDouble()
+
+                    val hours = if(time > 60.0) floor(time/60).toInt() else 0
+                    val minutes = floor(time - hours * 60).toInt()
+                    val seconds = ceil((time - floor(time)) * 60).toInt()
 
                     val request = PaceRequest(distance, time)
                     val validationResult = validatePaceRequest(request)
@@ -72,7 +77,7 @@ fun Application.paceEndpoint() {
                         val resultData =
                                 Result(averagePace, averageSpeed, distances, splits, isFast)
 
-                        val formData = Form(distance, time)
+                        val formData = Form(distance, hours, minutes, seconds)
 
                         content.put("form", formData)
                         content.put("result", resultData)
@@ -86,7 +91,7 @@ fun Application.paceEndpoint() {
                             }
                         }
 
-                        val formData = Form(distance, time, errorMap)
+                        val formData = Form(distance, hours, minutes, seconds, errorMap)
 
                         content.put("form", formData)
                         

@@ -1,11 +1,54 @@
 package net.pelata.frontend
 
+import kotlin.math.floor
+import kotlinx.browser.document
+import kotlinx.browser.window
+import org.w3c.dom.Element
+import org.w3c.dom.HTMLFormElement
 import org.w3c.dom.HTMLInputElement
 import org.w3c.dom.NodeList
 import org.w3c.dom.events.KeyboardEvent
 
 const val MIN_INPUT_LENGTH = 0
 const val MAX_INPUT_LENGTH = 2
+
+fun formSubmit(form: Element?) {
+    form?.addEventListener(
+            "submit",
+            {
+                it.preventDefault()
+
+                val target = it.target as HTMLFormElement
+                val action = target.action
+
+                val queryParams =
+                        buildMap<String, Double?> {
+                            val inputs = listOf("distance", "hours", "minutes", "seconds")
+                            for (input in inputs) {
+                                val element = document.getElementById(input) as HTMLInputElement
+                                val value = element.value.toDoubleOrNull()
+                                // can't use map.getOrDefault for some reasons, so make sure the key
+                                // is in map and accept null values
+                                put(input, value)
+                            }
+                        }
+
+                val distance = queryParams["distance"] ?: 0.0
+                val hours = queryParams["hours"] ?: 0.0
+                val seconds = queryParams["seconds"] ?: 0.0
+                val minutes = queryParams["minutes"] ?: 0.0
+                var time = 60 * hours + minutes
+                if (0 < seconds) {
+                    time += seconds / 60
+                }
+
+                if (0 < time) {
+                    time = floor(time * 1000) / 1000
+                    window.location.assign("$action?distance=${distance}&time=${time}")
+                }
+            }
+    )
+}
 
 /*
  * Adds event listener to the time input field (hh:mm:ss).

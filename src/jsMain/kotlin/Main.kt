@@ -6,9 +6,15 @@ fun main() {
     document.addEventListener(
             "DOMContentLoaded",
             {
+                // Register handler when form is submitted
+                val paceform = document.querySelector("#paceform")
+                formSubmit(paceform)
+
                 // Register time input
                 val timeInputFields =
-                        document.querySelectorAll(".input-group.time input[inputmode=\"numeric\"]")
+                        document.querySelectorAll(
+                                "#paceform .input-group.time input[inputmode=\"numeric\"]"
+                        )
                 timeInput(timeInputFields)
             }
     )
