@@ -230,6 +230,10 @@ label {
     box-shadow: var(--secondary) 0 0 .8em;
 }
 
+form[disabled] .input-group, form[disabled] .submit {
+    box-shadow: #7b7b7b 0 0 .4em;
+}
+
 .error-message {
     text-align: center;
 }

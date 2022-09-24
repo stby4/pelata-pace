@@ -20,7 +20,10 @@
                     autocomplete="off"
                     enterkeyhint="done"
                 >
-                <label for="distance">km</label>
+                <select name="unit" id="unit">
+                    <option value="KILOMETERS" <#if formdata.unit == "KILOMETERS">selected</#if>>km</option>
+                    <option value="MILES" <#if formdata.unit == "MILES">selected</#if>>mi</option>
+                </select>
             </div>
             <#if formdata.errors?? && formdata.errors['.distance']??>
                 <p class="error-message">

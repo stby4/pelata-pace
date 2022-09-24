@@ -14,9 +14,10 @@
     <#if result?has_content>
       <section>
         <p>
-          <span class="highlight">${result.average.minutes?string["##0"]}:${result.average.seconds?string["00"]} / km</span>
+          <span class="highlight">${result.average.minutes?string["##0"]}:${result.average.seconds?string["00"]} / ${result.unit.short}</span>
           <br/>
-          Average pace. That's equal to <#if result.isFast()>an incredible speed<#else>a speed</#if> of ${result.averageSpeed?string["##0.0"]} km/h.
+          Average pace. That's equal to <#if result.isFast()>an incredible speed<#else>a speed</#if> of ${result.averageSpeed?string["##0.0"]}
+          <#if "KILOMETERS" == result.unit.name>km/h<#else>mph</#if>.
         </p>
         <h2>Negative splits</h2>
         <p>
@@ -27,7 +28,7 @@
             <thead>
               <tr>
                 <#list result.distances as distance>
-                  <td>${distance?string["0.0"]} km</td>
+                  <td>${distance?string["0.0"]} ${result.unit.short}</td>
                 </#list>
               </tr>
             </thead>

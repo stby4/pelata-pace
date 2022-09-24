@@ -2,6 +2,7 @@ package net.pelata.features.pace.data
 
 import io.konform.validation.*
 import io.konform.validation.jsonschema.*
+import net.pelata.units.Distance
 
 const val MIN_DISTANCE = 1.0
 const val MAX_DISTANCE = 1000.0

@@ -48,6 +48,7 @@ kotlin {
         }
     }
     sourceSets {
+        val commonMain by getting
         val jvmMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-server-core-jvm:$ktor_version")

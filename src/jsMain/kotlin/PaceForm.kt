@@ -1,16 +1,31 @@
 package net.pelata.frontend
 
 import kotlin.math.floor
-import kotlinx.browser.document
 import kotlinx.browser.window
+import net.pelata.units.Distance
 import org.w3c.dom.Element
 import org.w3c.dom.HTMLFormElement
 import org.w3c.dom.HTMLInputElement
+import org.w3c.dom.HTMLSelectElement
 import org.w3c.dom.NodeList
 import org.w3c.dom.events.KeyboardEvent
 
 const val MIN_INPUT_LENGTH = 0
 const val MAX_INPUT_LENGTH = 2
+
+fun lockForm(form: Element, disable: Boolean) {
+    val formElements = form.querySelectorAll("input")
+    for (i in 0..formElements.length - 1) {
+        val inputElement = formElements.item(i) as HTMLInputElement
+        if (disable) {
+            inputElement.setAttribute("disabled", "disabled")
+            form.setAttribute("disabled", "disabled")
+        } else {
+            inputElement.removeAttribute("disabled")
+            form.removeAttribute("disabled")
+        }
+    }
+}
 
 fun formSubmit(form: Element?) {
     form?.addEventListener(
@@ -19,13 +34,16 @@ fun formSubmit(form: Element?) {
                 it.preventDefault()
 
                 val target = it.target as HTMLFormElement
+                // prevent double submit
+                lockForm(form, true)
+
                 val action = target.action
 
                 val queryParams =
                         buildMap<String, Double?> {
                             val inputs = listOf("distance", "hours", "minutes", "seconds")
                             for (input in inputs) {
-                                val element = document.getElementById(input) as HTMLInputElement
+                                val element = form.querySelector("#${input}") as HTMLInputElement
                                 val value = element.value.toDoubleOrNull()
                                 // can't use map.getOrDefault for some reasons, so make sure the key
                                 // is in map and accept null values
@@ -33,6 +51,10 @@ fun formSubmit(form: Element?) {
                             }
                         }
 
+                val unitField = form.querySelector("#unit") as HTMLSelectElement
+                val unit =
+                        Distance.values().firstOrNull { it.name == unitField.value }
+                                ?: Distance.KILOMETERS
                 val distance = queryParams["distance"] ?: 0.0
                 val hours = queryParams["hours"] ?: 0.0
                 val seconds = queryParams["seconds"] ?: 0.0
@@ -44,7 +66,10 @@ fun formSubmit(form: Element?) {
 
                 if (0 < time) {
                     time = floor(time * 1000) / 1000
-                    window.location.assign("$action?distance=${distance}&time=${time}")
+                    window.location.assign("$action?distance=${distance}&unit=${unit}&time=${time}")
+                } else {
+                    // unlock form and allow new inputs
+                    lockForm(form, false)
                 }
             }
     )

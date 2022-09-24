@@ -16,6 +16,7 @@ import net.pelata.features.pace.data.Result
 import net.pelata.features.pace.data.SplitTime
 import net.pelata.features.pace.data.validatePaceRequest
 import net.pelata.features.pace.model.Split
+import net.pelata.units.Distance
 import kotlin.math.floor
 import kotlin.math.ceil
 
@@ -52,6 +53,7 @@ fun Application.paceEndpoint() {
                     val time =
                             (call.request.queryParameters["time"]!!.filterNot { it == ',' })
                                     .toDouble()
+                    val unit = Distance.valueOf(call.request.queryParameters["unit"] ?: Distance.KILOMETERS.name)
 
                     val hours = if(time > 60.0) floor(time/60).toInt() else 0
                     val minutes = floor(time - hours * 60).toInt()
@@ -75,9 +77,9 @@ fun Application.paceEndpoint() {
                         val isFast = averageSpeed > IS_FAST_THRESHOLD
 
                         val resultData =
-                                Result(averagePace, averageSpeed, distances, splits, isFast)
+                                Result(unit, averagePace, averageSpeed, distances, splits, isFast)
 
-                        val formData = Form(distance, hours, minutes, seconds)
+                        val formData = Form(distance, hours, minutes, seconds, unit)
 
                         content.put("form", formData)
                         content.put("result", resultData)
@@ -91,7 +93,7 @@ fun Application.paceEndpoint() {
                             }
                         }
 
-                        val formData = Form(distance, hours, minutes, seconds, errorMap)
+                        val formData = Form(distance, hours, minutes, seconds, unit, errorMap)
 
                         content.put("form", formData)
                         
