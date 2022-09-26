@@ -57,4 +57,5 @@ The colours to be used for this website are:
 # Attributions
 
 This project uses ressources from the following awesome projects:
-- Font from [Google Fonts](https://fonts.google.com/specimen/Signika+Negative/about?category=Sans+Serif&subset=latin&preview.text=Pelata&preview.text_type=custom)
+- Font from [Google Fonts](https://fonts.google.com/specimen/Signika+Negative/about?category=Sans+Serif&subset=latin&preview.text=Pelata&preview.text_type=custom).
+- Gradle config based on the example from [kotlin-hands-on](https://github.com/kotlin-hands-on/jvm-js-fullstack/tree/final).
