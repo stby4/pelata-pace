@@ -12,6 +12,9 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.21.0"
 }
 
+println(project.buildDir)
+println(project.projectDir) 
+
 group = "net.pelata"
 version = "0.0.1"
 application {
