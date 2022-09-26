@@ -39,12 +39,12 @@ kotlin {
         }
         js {
             browser {
-                binaries.executable()
                 commonWebpackConfig {
                     outputFileName = "main.js"
                     outputPath = File(buildDir, "processedResources/jvm/main/static")
                 }
             }
+            binaries.executable()
         }
     }
     sourceSets {

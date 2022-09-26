@@ -4,24 +4,36 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "./gradlew buildFatJar -x test",
-            "problemMatcher": [],
+            "command": "gradlew buildFatJar -x test",
+            "problemMatcher": [
+                "$gradle"
+            ],
             "group": {
-                "kind": "build",
+                "kind": "build"
+            }
+        },
+        {
+            "label": "run continuous",
+            "type": "shell",
+            "command": "gradlew run --continuous -Pdevelopment=true -Pkotlin.incremental.js.ir=true",
+            "problemMatcher": [
+                "$gradle"
+            ],
+            "group": {
+                "kind": "none",
                 "isDefault": true
             }
         },
         {
-            "label": "run",
-            "type": "shell",
-            "command": "./gradlew run",
-            "problemMatcher": []
-        },
-        {
             "label": "test",
             "type": "shell",
-            "command": "./gradlew test",
-            "problemMatcher": []
+            "command": "gradlew test",
+            "problemMatcher": [
+                "$gradle"
+            ],
+            "group": {
+                "kind": "test"
+            }
         }
     ]
 }
