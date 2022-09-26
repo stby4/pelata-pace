@@ -49,16 +49,9 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    
-    - name: Set up Node 16
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
 
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: buildFatJar
+      run: gradlew buildFatJar --console=verbose
 
     - name: Copy jar to work dir
       run: mv build/libs/net.pelata.pace-all.jar net.pelata.pace-all.jar
