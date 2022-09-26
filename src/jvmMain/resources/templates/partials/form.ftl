@@ -20,7 +20,7 @@
                     autocomplete="off"
                     enterkeyhint="done"
                 >
-                <select name="unit" id="unit">
+                <select class="label" name="unit" id="unit">
                     <option value="KILOMETERS" <#if formdata.unit == "KILOMETERS">selected</#if>>km</option>
                     <option value="MILES" <#if formdata.unit == "MILES">selected</#if>>mi</option>
                 </select>
@@ -79,7 +79,7 @@
                     autocomplete="off"
                     enterkeyhint="done"
                 >
-                <label for="seconds">time</label>
+                <label class="label" for="seconds">time</label>
             </div>
             <#if formdata.errors?? && formdata.errors['.time']??>
                 <p class="error-message">

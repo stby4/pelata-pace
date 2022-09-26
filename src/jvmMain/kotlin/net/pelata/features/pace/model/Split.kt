@@ -2,12 +2,22 @@ package net.pelata.features.pace.model
 
 import kotlin.math.*
 import net.pelata.features.pace.data.SplitTime
+import net.pelata.units.Distance
+
+const val MILES_IN_KILOMETERS = 1.609344
 
 // Contains the split calculations for a given distance and a goal time.
 // precision: the pace will be calculated for each distance / precision.
-class Split(val distance: Double, val time: Double, val precision: Int = 100) {
+class Split(
+        val distance: Double,
+        val time: Double,
+        val unit: Distance = Distance.KILOMETERS,
+        val precision: Int = 100
+) {
     val averagePace: Double = time / distance
     val averageSpeed: Double = distance / (time / 60)
+    val averageSpeedKmh: Double =
+            if (unit == Distance.KILOMETERS) averageSpeed else averageSpeed * MILES_IN_KILOMETERS
 
     fun negativeSplits(percentage: Double): List<SplitTime> {
 

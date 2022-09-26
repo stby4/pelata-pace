@@ -2,6 +2,7 @@ package net.pelata
 
 import kotlin.test.*
 import net.pelata.features.pace.model.*
+import net.pelata.units.Distance
 
 class SplitTest {
 
@@ -14,11 +15,23 @@ class SplitTest {
     }
 
     @Test
-    fun testAverageSpeed() {
-        val split = Split(10.0, 60.0)
+    fun testAverageSpeedKmh() {
+        val split = Split(10.0, 60.0, Distance.KILOMETERS)
         val spd = split.averageSpeed
+        val spdKmh = split.averageSpeedKmh
 
         assertEquals(10.0, spd, 0.0001)
+        assertEquals(10.0, spdKmh, 0.0001)
+    }
+
+    @Test
+    fun testAverageSpeedMph() {
+        val split = Split(10.0, 60.0, Distance.MILES)
+        val spd = split.averageSpeed
+        val spdKmh = split.averageSpeedKmh
+
+        assertEquals(10.0, spd, 0.0001)
+        assertEquals(16.09334, spdKmh, 0.0001)
     }
 
     @Test
@@ -58,7 +71,7 @@ class SplitTest {
 
     @Test
     fun testNegativeSplits() {
-        val split = Split(10.33, 60.0, 10)
+        val split = Split(10.33, 60.0, Distance.KILOMETERS, 10)
 
         val splits = split.negativeSplits(0.05)
 

@@ -17,7 +17,7 @@
           <span class="highlight">${result.average.minutes?string["##0"]}:${result.average.seconds?string["00"]} / ${result.unit.short}</span>
           <br/>
           Average pace. That's equal to <#if result.isFast()>an incredible speed<#else>a speed</#if> of ${result.averageSpeed?string["##0.0"]}
-          <#if "KILOMETERS" == result.unit.name>km/h<#else>mph</#if>.
+          <#if "MILES" == result.unit.name()>mph<#else>km/h</#if>.
         </p>
         <h2>Negative splits</h2>
         <p>

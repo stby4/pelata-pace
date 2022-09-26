@@ -161,7 +161,7 @@ form > :last-child .input-group {
     margin-right: 0;
 }
 
-input, .input, .input:visited {
+input, .input, .input:visited, select {
     display: inline-block;
     background: transparent;
     color: var(--text);
@@ -171,6 +171,7 @@ input, .input, .input:visited {
     font-size: 1em;
     line-height: 1em;
     text-decoration: none;
+    appearance: none;
 }
 
 input:focus, .input:focus {
@@ -183,8 +184,8 @@ input[inputmode="numeric"], input[inputmode="decimal"] {
     text-align: end;
 }
 
-label {
-    padding: 1.2em 1.2em 1.2em 0;
+label, .label {
+    padding: 0 1.2em 0 0;
     font-size: 1em;
 }
 

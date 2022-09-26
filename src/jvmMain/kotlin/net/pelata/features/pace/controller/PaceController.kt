@@ -59,11 +59,11 @@ fun Application.paceEndpoint() {
                     val minutes = floor(time - hours * 60).toInt()
                     val seconds = ceil((time - floor(time)) * 60).toInt()
 
-                    val request = PaceRequest(distance, time)
-                    val validationResult = validatePaceRequest(request)
+                    val params = PaceRequest(distance, time)
+                    val validationResult = validatePaceRequest(params)
 
                     if (validationResult is Valid) {
-                        val split = Split(distance, time)
+                        val split = Split(distance, time, unit)
                         val splits =
                                 buildList() {
                                     for (i in 1..10) {
@@ -74,7 +74,7 @@ fun Application.paceEndpoint() {
                         val distances = split.distances()
                         val averagePace = SplitTime(split.averagePace)
                         val averageSpeed = split.averageSpeed
-                        val isFast = averageSpeed > IS_FAST_THRESHOLD
+                        val isFast = split.averageSpeedKmh > IS_FAST_THRESHOLD
 
                         val resultData =
                                 Result(unit, averagePace, averageSpeed, distances, splits, isFast)
@@ -101,7 +101,7 @@ fun Application.paceEndpoint() {
                     }
                 } catch (e: NumberFormatException) {
                     throw RequestValidationException(e, listOf("Invalid request parameters."))
-                } catch (e: Throwable) {
+                } catch (e: Exception) {
                     throw RequestValidationException(e, listOf("Unknown error."))
                 }
             }

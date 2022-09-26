@@ -110,21 +110,24 @@ fun timeInput(timeInputFields: NodeList) {
 
                     val previousSibling = target.previousElementSibling as? HTMLInputElement
                     val nextSibling = target.nextElementSibling as? HTMLInputElement
-                    val cursorPos = target.selectionStart
+                    val cursorPosStart = target.selectionStart
+                    val cursorPosEnd = target.selectionEnd
                     val length = target.value.length
 
-                    when (event.key) {
-                        "ArrowRight" ->
-                                if (cursorPos == length) {
-                                    event.preventDefault()
-                                    nextSibling?.focus()
-                                }
-                        "ArrowLeft", "Backspace" ->
-                                if (cursorPos == MIN_INPUT_LENGTH) {
-                                    event.preventDefault()
-                                    previousSibling?.focus()
-                                }
-                        else -> {}
+                    if (cursorPosStart == cursorPosEnd) {
+                        when (event.key) {
+                            "ArrowRight" ->
+                                    if (cursorPosStart == length) {
+                                        event.preventDefault()
+                                        nextSibling?.focus()
+                                    }
+                            "ArrowLeft", "Backspace" ->
+                                    if (cursorPosStart == MIN_INPUT_LENGTH) {
+                                        event.preventDefault()
+                                        previousSibling?.focus()
+                                    }
+                            else -> {}
+                        }
                     }
                 },
                 false
