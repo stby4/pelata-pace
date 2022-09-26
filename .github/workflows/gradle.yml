@@ -51,7 +51,11 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Gradle
-      run: gradlew buildFatJar --console=verbose
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: |
+          buildFatJar
+          --console=verbose
 
     - name: Copy jar to work dir
       run: mv build/libs/net.pelata.pace-all.jar net.pelata.pace-all.jar
