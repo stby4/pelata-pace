@@ -41,7 +41,7 @@ kotlin {
             browser {
                 commonWebpackConfig {
                     outputFileName = "main.js"
-                    outputPath = File(buildDir, "processedResources/jvm/main/static")
+                    outputPath = File("$buildDir/processedResources/jvm/main/static")
                 }
             }
             binaries.executable()
