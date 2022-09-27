@@ -14,10 +14,11 @@ class Split(
         val unit: Distance = Distance.KILOMETERS,
         val precision: Int = 100
 ) {
-    val averagePace: Double = time / distance
-    val averageSpeed: Double = distance / (time / 60)
-    val averageSpeedKmh: Double =
-            if (unit == Distance.KILOMETERS) averageSpeed else averageSpeed * MILES_IN_KILOMETERS
+    val averagePace: Double by lazy { time / distance }
+    val averageSpeed: Double by lazy { distance / (time / 60) }
+    val averageSpeedKmh: Double by lazy {
+        if (unit == Distance.KILOMETERS) averageSpeed else averageSpeed * MILES_IN_KILOMETERS
+    }
 
     fun negativeSplits(percentage: Double): List<SplitTime> {
 
