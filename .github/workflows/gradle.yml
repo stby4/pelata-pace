@@ -55,7 +55,7 @@ jobs:
       uses: gradle/wrapper-validation-action@v1
 
     - name: Build with Gradle
-      run: ./gradlew buildFatJar --console=verbose
+      run: ./gradlew buildFatJar
 
     - name: Copy jar to work dir
       run: mv build/libs/net.pelata.pace-all.jar net.pelata.pace-all.jar
@@ -91,4 +91,3 @@ jobs:
         version_label: ${{github.SHA}}
         region: eu-west-2
         deployment_package: net.pelata.pace-bundle.zip
-      

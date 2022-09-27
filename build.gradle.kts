@@ -12,9 +12,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "1.21.0"
 }
 
-println(project.buildDir)
-println(project.projectDir) 
-
 group = "net.pelata"
 version = "0.0.1"
 application {
@@ -80,16 +77,17 @@ kotlin {
 }
 
 // include JS artifacts in production fat jar
-tasks.getByName("buildFatJar") {
+tasks.getByName<Jar>("shadowJar") {
     val webpackTask = tasks.getByName<KotlinWebpack>("jsBrowserProductionWebpack")
     dependsOn(webpackTask) // make sure JS gets compiled first
+    from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
 }
 
 // include JS artifacts in dev jar
 tasks.getByName<Jar>("jvmJar") {
-    val webpackTask = tasks.getByName<KotlinWebpack>("jsBrowserDevelopmentWebpack")
+    val webpackTask = tasks.getByName<KotlinWebpack>("jsBrowserProductionWebpack")
     dependsOn(webpackTask) // make sure JS gets compiled first
-    // from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
+    from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
 }
 
 tasks.getByName<JavaExec>("run") {
