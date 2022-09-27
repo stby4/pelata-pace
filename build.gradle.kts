@@ -41,7 +41,7 @@ kotlin {
             browser {
                 commonWebpackConfig {
                     outputFileName = "main.js"
-                    outputPath = File("$buildDir/processedResources/jvm/main/static")
+                    outputPath = File(buildDir, "processedResources/jvm/main/static")
                 }
             }
             binaries.executable()
@@ -78,16 +78,28 @@ kotlin {
 
 // include JS artifacts in production fat jar
 tasks.getByName<Jar>("shadowJar") {
-    val webpackTask = tasks.getByName<KotlinWebpack>("jsBrowserProductionWebpack")
+    val isDevelopment: Boolean = project.ext.has("development")
+    val taskName = if (isDevelopment) {
+        "jsBrowserDevelopmentWebpack"
+    } else {
+        "jsBrowserProductionWebpack"
+    }
+    val webpackTask = tasks.getByName<KotlinWebpack>(taskName)
     dependsOn(webpackTask) // make sure JS gets compiled first
     from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
 }
 
 // include JS artifacts in dev jar
 tasks.getByName<Jar>("jvmJar") {
-    val webpackTask = tasks.getByName<KotlinWebpack>("jsBrowserProductionWebpack")
+    val isDevelopment: Boolean = project.ext.has("development")
+    val taskName = if (isDevelopment) {
+        "jsBrowserDevelopmentWebpack"
+    } else {
+        "jsBrowserProductionWebpack"
+    }
+    val webpackTask = tasks.getByName<KotlinWebpack>(taskName)
     dependsOn(webpackTask) // make sure JS gets compiled first
-    from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
+    // from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
 }
 
 tasks.getByName<JavaExec>("run") {

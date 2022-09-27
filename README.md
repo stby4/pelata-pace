@@ -1,6 +1,6 @@
 # Pelata
 
-Pelata is the Finnish and means "Play" => This project is just my playground.
+Pelata is Finnish and means "Play" => This project is just my playground.
 
 ✔️ Visit: https://www.pelata.net
 
@@ -37,7 +37,7 @@ Pelata is the Finnish and means "Play" => This project is just my playground.
    - [Kotlin](https://marketplace.visualstudio.com/items?itemName=fwcd.kotlin).
    - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 1. Reload the VS Code window. Gradle should start to configure the project, which might take a couple of minutes.
-1. Once done, the Gradle tasks will show up in the sidebar of VS Code. Alternatively, they can be accessed using "Ctrl + Shift + P" -> "Tasks: Run Task".
+1. Once done, the Gradle tasks will show up in the sidebar of VS Code. Alternatively, they can be accessed using "Ctrl + Shift + P" -> "Tasks: Run Task" -> "run continuous".
 
 
 # Styleguide
