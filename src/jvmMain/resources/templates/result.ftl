@@ -21,10 +21,10 @@
         </p>
         <h2>Negative splits</h2>
         <p>
-          <caption>Calculated negative splits for your optimal race in minutes and seconds per kilometer:</caption>
+          <caption id="table-splits-caption">Calculated negative splits for your optimal race in minutes and seconds per kilometer:</caption>
         </p>
         <div class="wrapper">
-          <table>
+          <table role="grid" aria-labelledby="table-splits-caption">
             <thead>
               <tr>
                 <#list result.distances as distance>

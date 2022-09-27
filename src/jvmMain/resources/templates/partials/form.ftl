@@ -19,8 +19,10 @@
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"
+                    aria-label="Distance in kilometers. Decimal values are allowed."
+                    aria-labelledby="unit"
                 >
-                <select class="label" name="unit" id="unit">
+                <select class="label" name="unit" id="unit" aria-label="Distance unit.">
                     <option value="KILOMETERS" <#if formdata.unit == "KILOMETERS">selected</#if>>km</option>
                     <option value="MILES" <#if formdata.unit == "MILES">selected</#if>>mi</option>
                 </select>
@@ -48,6 +50,7 @@
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"
+                    aria-labelledby="time-label"
                 >
                 :
                 <input
@@ -63,6 +66,7 @@
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"
+                    aria-labelledby="time-label"
                 >
                 :
                 <input
@@ -78,8 +82,9 @@
                     spellcheck="false"
                     autocomplete="off"
                     enterkeyhint="done"
+                    aria-labelledby="time-label"
                 >
-                <label class="label" for="seconds">time</label>
+                <label id="time-label" class="label" for="seconds">time</label>
             </div>
             <#if formdata.errors?? && formdata.errors['.time']??>
                 <p class="error-message">
