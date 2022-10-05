@@ -61,7 +61,7 @@ jobs:
       run: mv build/libs/net.pelata.pace-all.jar net.pelata.pace-all.jar
 
     - name: Create bundle for EB
-      run: zip -9 -r -q net.pelata.pace-bundle.zip net.pelata.pace-all.jar .ebextensions
+      run: zip -9 -r -q net.pelata.pace-bundle.zip net.pelata.pace-all.jar .ebextensions .platform
 
     - name: Upload JAR
       uses: actions/upload-artifact@v3
