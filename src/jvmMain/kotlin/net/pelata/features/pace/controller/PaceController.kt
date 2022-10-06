@@ -10,11 +10,11 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.*
-import net.pelata.features.pace.data.Form
-import net.pelata.features.pace.data.PaceRequest
-import net.pelata.features.pace.data.Result
-import net.pelata.features.pace.data.SplitTime
-import net.pelata.features.pace.data.validatePaceRequest
+import net.pelata.features.pace.controller.Form
+import net.pelata.features.pace.controller.PaceRequest
+import net.pelata.features.pace.controller.Result
+import net.pelata.features.pace.entity.SplitTime
+import net.pelata.features.pace.controller.validatePaceRequest
 import net.pelata.features.pace.model.Split
 import net.pelata.units.Distance
 import kotlin.math.floor
@@ -64,12 +64,7 @@ fun Application.paceEndpoint() {
 
                     if (validationResult is Valid) {
                         val split = Split(distance, time, unit)
-                        val splits =
-                                buildList() {
-                                    for (i in 1..10) {
-                                        add(split.negativeSplits(i / 100.0))
-                                    }
-                                }
+                        val splits = split.negativeSplitsList()
 
                         val distances = split.distances()
                         val averagePace = SplitTime(split.averagePace)
@@ -108,5 +103,3 @@ fun Application.paceEndpoint() {
         }
     }
 }
-
-data class PaceRequest(val distance: Double, val time: Double)

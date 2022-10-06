@@ -1,7 +1,10 @@
 package net.pelata.features.pace.model
 
 import kotlin.math.*
-import net.pelata.features.pace.data.SplitTime
+import net.pelata.features.pace.entity.SplitDistanceList
+import net.pelata.features.pace.entity.SplitTime
+import net.pelata.features.pace.entity.SplitTimeList
+import net.pelata.features.pace.entity.SplitTimeTable
 import net.pelata.units.Distance
 
 const val MILES_IN_KILOMETERS = 1.609344
@@ -20,7 +23,8 @@ class Split(
         if (unit == Distance.KILOMETERS) averageSpeed else averageSpeed * MILES_IN_KILOMETERS
     }
 
-    fun negativeSplits(percentage: Double): List<SplitTime> {
+    /** Calculates negative splits with a given percentage. */
+    fun negativeSplits(percentage: Double): SplitTimeList {
 
         assert(percentage >= 0.0 && percentage <= 1.0)
 
@@ -37,10 +41,26 @@ class Split(
                     SplitTime(calcSplitPace(idx, slowest, precision, distance, step))
                 }
 
-        return times
+        return SplitTimeList(times)
     }
 
-    fun distances(): List<Double> {
+    /** Returns ten rows of negative splits with increasing difference. */
+    fun negativeSplitsList(): SplitTimeTable {
+        val splitTimeTable =
+                buildList() {
+                    for (i in 1..10) {
+                        add(negativeSplits(i / 200.0))
+                    }
+                }
+
+        return SplitTimeTable(splitTimeTable)
+    }
+
+    /**
+     * Returns the cummulated distance sum for each split. For n splits, n - 1 will have a distance
+     * of 1, and the last one has the remaining distance to the full track distance.
+     */
+    fun distances(): SplitDistanceList {
         val distances = DoubleArray(ceil(distance).toInt()) { 1.0 }
         if (distance - floor(distance) > 0) {
             distances[distances.size - 1] = distance - floor(distance)
@@ -48,10 +68,11 @@ class Split(
 
         val distancesSum = distances.mapIndexed { idx, distance -> 1.0 * idx + distance }
 
-        return distancesSum
+        return SplitDistanceList(distancesSum)
     }
 
-    fun calcSplitPace(
+    /** Calculates the pace for a given split (defined by idx). */
+    internal fun calcSplitPace(
             idx: Int,
             slowest: Double,
             precision: Int,

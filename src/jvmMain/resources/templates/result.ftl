@@ -27,16 +27,16 @@
           <table role="grid" aria-labelledby="table-splits-caption">
             <thead>
               <tr>
-                <#list result.distances as distance>
+                <#list result.distances.splitDistances as distance>
                   <td>${distance?string["0.0"]} ${result.unit.short}</td>
                 </#list>
               </tr>
             </thead>
             <tbody>
-              <#list result.splits as splits>
+              <#list result.splits.splitTimeTable as splits>
                 <tr>
-                  <#list splits as split>
-                    <td>${split.minutes?string["##0"]}:${split.seconds?string["00"]}</td>
+                  <#list splits.splitTimes as splitTime>
+                    <td>${splitTime.minutes?string["##0"]}:${splitTime.seconds?string["00"]}</td>
                   </#list>
                 </tr>
               </#list>

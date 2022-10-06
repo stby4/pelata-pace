@@ -192,6 +192,7 @@ label, .label {
 .submit {
     box-shadow: var(--primary) 0 0 .4em;
     transition: box-shadow 400ms;
+    line-height: 1.2em;
 }
 
 .submit:hover, .submit:focus {
