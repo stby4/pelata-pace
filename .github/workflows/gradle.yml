@@ -89,5 +89,5 @@ jobs:
         application_name: ${{ secrets.AWS_APPLICATION_NAME }}
         environment_name: ${{ secrets.AWS_ENV_NAME }}
         version_label: ${{github.SHA}}
-        region: eu-west-2
+        region: ${{ secrets.AWS_REGION }}
         deployment_package: net.pelata.pace-bundle.zip
