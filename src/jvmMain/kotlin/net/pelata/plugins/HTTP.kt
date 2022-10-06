@@ -8,9 +8,7 @@ import io.ktor.server.application.*
 const val DEFLATE_THRESHOLD : Long = 1024
 
 fun Application.configureHTTP() {
-    install(DefaultHeaders) {
-        header("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload")
-    }
+    install(DefaultHeaders)
     install(ConditionalHeaders)
     install(Compression) {
         gzip {
