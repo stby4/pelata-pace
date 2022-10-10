@@ -1,4 +1,4 @@
-![Untitled](https://user-images.githubusercontent.com/4112178/194668172-de950fb6-481c-4a71-9a8c-9a986c4c2059.svg)
+![Pelata](https://user-images.githubusercontent.com/4112178/194953064-9a195a93-a77f-4fb7-90d8-b6281adb9d94.svg)
 
 
 # Pelata
