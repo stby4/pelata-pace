@@ -80,14 +80,3 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: pelata-zip
-
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v20
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-        application_name: ${{ secrets.AWS_APPLICATION_NAME }}
-        environment_name: ${{ secrets.AWS_ENV_NAME }}
-        version_label: ${{github.SHA}}
-        region: ${{ secrets.AWS_REGION }}
-        deployment_package: net.pelata.pace-bundle.zip
