@@ -8,13 +8,15 @@ RUN adduser --disabled-password --gecos "" pelatauser
 RUN apk add openjdk17-jre-headless supervisor
 WORKDIR /app
 RUN chown pelatauser /app
-RUN chown nginx /var/cache/nginx
-COPY --chown=pelatauser supervisord.conf /etc/supervisor/supervisord.conf
+COPY --chown=pelatauser supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY --chown=pelatauser build/libs/net.pelata.pace-all.jar .
-COPY --chown=nginx etc /etc/
+COPY --chown=pelatauser etc /etc/
 
 USER pelatauser
 
-ENV PORT=8080
+ENV PORT=5000
 
-CMD ["/usr/bin/supervisord -c /etc/supervisor/supervisord.conf"]
+EXPOSE 443/tcp
+EXPOSE 80/tcp
+
+CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
