@@ -1,4 +1,4 @@
-package net.pelata.features.pace.data
+package net.pelata.features.pace.controller
 
 import net.pelata.units.Distance
 

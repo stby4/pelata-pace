@@ -1,4 +1,4 @@
-package net.pelata.features.pace.data
+package net.pelata.features.pace.entity
 
 import kotlin.math.floor
 
