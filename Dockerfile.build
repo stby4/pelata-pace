@@ -1,0 +1,30 @@
+ARG runtime_base_tag=1.23-alpine
+ARG build_base_tag=jdk17-alpine
+
+FROM nginx:${runtime_base_tag} AS base
+WORKDIR /app
+
+FROM gradle:${build_base_tag} AS build
+
+# RUN apk add openjdk17-jdk
+RUN apk add bash curl zip && \
+  curl -s "https://get.sdkman.io" | bash
+RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && sdk install kotlin"
+
+WORKDIR /app
+COPY . .
+RUN gradle buildFatJar --no-daemon
+
+FROM base AS final
+RUN apk add openjdk17-jre-headless supervisor
+WORKDIR /app
+COPY --from=build /app/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY --from=build /app/build/libs/net.pelata.pace-all.jar .
+
+RUN adduser --disabled-password --gecos "" pelatauser
+USER pelatauser
+
+ENV PORT=8080
+EXPOSE 8080
+
+CMD ["/usr/bin/supervisord"]
