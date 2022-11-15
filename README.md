@@ -1,3 +1,6 @@
+![Pelata](https://user-images.githubusercontent.com/4112178/194953064-9a195a93-a77f-4fb7-90d8-b6281adb9d94.svg)
+
+
 # Pelata
 
 Pelata is Finnish and means "Play" => This project is just my playground.
@@ -11,7 +14,7 @@ Pelata is Finnish and means "Play" => This project is just my playground.
 
 # Local setup
 
-> This project has been developed with Visual Studio Code on Ubuntu 20. Other IDEs and operating systems should work, but the setup might differ.
+> This project has been developed with Visual Studio Code on Ubuntu 20.04. Other IDEs and operating systems should work, but the setup might differ.
 
 1. Make sure that v17 of OpenJDK is installed:
    ```bash
