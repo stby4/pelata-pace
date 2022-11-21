@@ -1,7 +1,7 @@
-ARG runtime_base_tag=1.23-alpine
+ARG runtime_base_tag=3.17
 ARG build_base_tag=jdk17-alpine
 
-FROM nginx:${runtime_base_tag} AS base
+FROM alpine:${runtime_base_tag} AS base
 WORKDIR /app
 
 FROM gradle:${build_base_tag} AS build
@@ -16,15 +16,17 @@ COPY . .
 RUN gradle buildFatJar --no-daemon
 
 FROM base AS final
+USER root
+RUN adduser --disabled-password --gecos "" pelatauser
+
 RUN apk add openjdk17-jre-headless supervisor
 WORKDIR /app
-COPY --from=build /app/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY --from=build /app/build/libs/net.pelata.pace-all.jar .
+RUN chown pelatauser /app
+COPY --chown=pelatauser build/libs/net.pelata.pace-all.jar .
 
-RUN adduser --disabled-password --gecos "" pelatauser
 USER pelatauser
 
-ENV PORT=8080
-EXPOSE 8080
+ENV PORT=5000
+EXPOSE 5000/tcp
 
-CMD ["/usr/bin/supervisord"]
+CMD java -jar net.pelata.pace-all.jar

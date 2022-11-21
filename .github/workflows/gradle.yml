@@ -83,17 +83,11 @@ jobs:
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
     
-    - name: Install TLS certificates
-      run: |
-        mkdir -p etc/nginx/certs
-        echo "${{ secrets.TLS_CERT }}" > etc/nginx/certs/default.crt
-        echo "${{ secrets.TLS_KEY }}" > etc/nginx/certs/default.key
-    
     - name: Build container image
-      run: docker build -t ${{ secrets.REGISTRY_NAME }}/pelata:$(echo $GITHUB_SHA | head -c7) .
+      run: docker build -t ${{ secrets.REGISTRY_NAME }}/pelata:latest .
     
     - name: Log in to CR
       run: doctl registry login --expiry-seconds 1200
     
     - name: Push image to CR
-      run: docker push ${{ secrets.REGISTRY_NAME }}/pelata:$(echo $GITHUB_SHA | head -c7)
+      run: docker push ${{ secrets.REGISTRY_NAME }}/pelata:latest
