@@ -1,0 +1,13 @@
+.idea
+.github
+.vscode
+bin
+out
+.history
+.ionide
+.gradle
+.platform
+README.md
+SECURITY.md
+.gitignore
+.editorconfig
