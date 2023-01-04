@@ -187,6 +187,7 @@ input[inputmode="numeric"], input[inputmode="decimal"] {
 label, .label {
     padding: 0 1.2em 0 0;
     font-size: 1em;
+    border-radius: unset;
 }
 
 .submit {
