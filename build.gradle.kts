@@ -6,9 +6,9 @@ val logback_version: String by project
 val konform_version: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.7.21"
+    kotlin("multiplatform") version "1.8.0"
     application
-    id("io.ktor.plugin") version "2.1.3"
+    id("io.ktor.plugin") version "2.2.1"
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
 }
 
@@ -33,6 +33,7 @@ detekt {
 }
 
 kotlin {
+    jvmToolchain(17)
     targets {
         jvm {
             withJava()
