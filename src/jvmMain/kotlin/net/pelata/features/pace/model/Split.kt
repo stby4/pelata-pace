@@ -24,20 +24,16 @@ class Split(
 
         assert(percentage >= 0.0 && percentage <= 1.0)
 
-        val slowest = averagePace + averagePace * percentage
-        val segments = ceil(distance).toInt()
-        val distances = DoubleArray(segments) { 1.0 }
-        if (distance - floor(distance) > 0) {
-            distances[distances.size - 1] = distance - floor(distance)
+        val diff = averagePace * percentage
+        val segmentsZero = ceil(distance).toInt() - 1
+
+        val splitTimes = buildList() {
+            for (i in 0..segmentsZero) {
+                add(calcSplitPace(i, diff, averagePace, distance))
+            }
         }
 
-        val step = -2 * averagePace * percentage / (distance * precision)
-        val times =
-                distances.mapIndexed { idx, distance ->
-                    SplitTime(calcSplitPace(idx, slowest, precision, distance, step))
-                }
-
-        return times
+        return splitTimes
     }
 
     fun distances(): List<Double> {
@@ -53,9 +49,17 @@ class Split(
 
     fun calcSplitPace(
             idx: Int,
-            slowest: Double,
-            precision: Int,
-            distance: Double,
-            step: Double
-    ): Double = slowest + (precision * step * (idx + distance / 2))
+            diff: Double,
+            averagePace: Double,
+            totalDistance: Double
+    ): SplitTime {
+        val splitDistance = when(idx < totalDistance - 1) {
+            true -> 1.0
+            false -> totalDistance - idx - 1
+        }
+
+        val duration = - 2 * diff / totalDistance * (idx + splitDistance / 2) + averagePace + diff
+        val split = SplitTime(duration)
+        return split
+    }
 }
