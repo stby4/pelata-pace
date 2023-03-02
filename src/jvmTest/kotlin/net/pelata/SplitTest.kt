@@ -58,15 +58,15 @@ class SplitTest {
     @Test
     fun testCalcSplitPace() {
         val split = Split(10.0, 60.0)
-        
-        val split0 = split.calcSplitPace(0, 6.0, 100, 1.0, 0.02)
-        assertEquals(7.0, split0, 0.0001)
 
-        val split1 = split.calcSplitPace(1, 6.0, 100, 1.0, 0.02)
-        assertEquals(9.0, split1, 0.0001)
+        val split0 = split.calcSplitPace(0, 0.5, 6.0, 1.0)
+        assertEquals(6.5, split0.duration, 0.00001)
 
-        val split2 = split.calcSplitPace(2, 6.0, 100, 0.33, 0.02)
-        assertEquals(10.33, split2, 0.0001)
+        val split1 = split.calcSplitPace(1, 1.0, 6.0, 2.0)
+        assertEquals(6.0, split1.duration, 0.00001)
+
+        val split2 = split.calcSplitPace(2, 1.0, 6.0, 1.33)
+        assertEquals(5.248, split2.duration, 0.001)
     }
 
     @Test
@@ -77,8 +77,11 @@ class SplitTest {
 
         assertEquals(6.07, splits[0].duration, 0.01)
 
-        assertEquals(5.79, splits[5].duration, 0.01)        
+        assertEquals(5.79, splits[5].duration, 0.01)
 
-        assertEquals(5.518, splits[10].duration, 0.01)
+        assertEquals(5.55, splits[10].duration, 0.01)
+
+        val totalTime = splits.sumOf { it.duration } - (0.67 * splits[10].duration)
+        assertEquals(60.0, totalTime, 0.01)
     }
 }
