@@ -7,10 +7,4 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-  
-  - package-ecosystem: "npm"
-    directory: "/kotlin-js-store" # Location of yarn.lock
-    schedule:
-      interval: "weekly"
-    # Disable version updates for yarn dependencies
-    open-pull-requests-limit: 0
+
