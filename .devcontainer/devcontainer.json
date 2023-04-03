@@ -8,15 +8,24 @@
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/kotlin-sdkman:2": {
 			"version": "latest",
-			"jdkVersion": "17",
-			"jdkDistro": "tem"
+			"jdkVersion": "17"
 		},
         "ghcr.io/devcontainers/features/github-cli:1": {}
-	}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+		  // Add the IDs of extensions you want installed when the container is created.
+		  "extensions": [
+			"dcortes92.FreeMarker",
+			"vscjava.vscode-gradle",
+			"fwcd.kotlin"
+		  ]
+		}
+	  }
 }
