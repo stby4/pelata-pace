@@ -16,21 +16,21 @@ Pelata is Finnish and means "Play" => This project is just my playground.
 
 > This project has been developed with Visual Studio Code on Ubuntu 20.04. Other IDEs and operating systems should work, but the setup might differ.
 
-1. Make sure that v17 of OpenJDK is installed:
-   ```bash
-   $ java --version
-   openjdk 17.0.4 2022-07-19
-   OpenJDK Runtime Environment (build 17.0.4+8-Ubuntu-120.04)
-   OpenJDK 64-Bit Server VM (build 17.0.4+8-Ubuntu-120.04, mixed mode, sharing)
-   ```
-   If not, use `apt` to install OpenJDK 17:
-   ```bash
-   sudo apt install openjdk-17-jre-headless
-   ```
 1. Install SDKMAN:
    ```bash
    $ curl -s "https://get.sdkman.io" | bash
    $ source "$HOME/.sdkman/bin/sdkman-init.sh"
+   ```
+1. Make sure that v17 of OpenJDK is installed:
+   ```bash
+   $ java --version
+   openjdk 17.0.6 2023-01-17
+   OpenJDK Runtime Environment Temurin-17.0.6+10 (build 17.0.6+10)
+   OpenJDK 64-Bit Server VM Temurin-17.0.6+10 (build 17.0.6+10, mixed mode, sharing)
+   ```
+   If not, install OpenJDK 17:
+   ```bash
+   $ sdk install java 17.0.6-tem
    ```
 1. Install Kotlin:
    ```bash
