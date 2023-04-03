@@ -8,13 +8,17 @@
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/kotlin-sdkman:2": {
 			"version": "latest",
-			"jdkVersion": "17"
+			"jdkVersion": "17",
+			"jdkDistro": "tem"
 		},
-        "ghcr.io/devcontainers/features/github-cli:1": {}
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"configureZshAsDefaultShell": true
+		}
 	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [8080],
 
 	// Configure tool-specific properties.
 	"customizations": {
