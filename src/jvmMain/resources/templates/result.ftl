@@ -21,7 +21,13 @@
         </p>
         <h2>Negative splits</h2>
         <p>
-          <caption id="table-splits-caption">Calculated negative splits for your optimal race in minutes and seconds per kilometer:</caption>
+          <caption id="table-splits-caption">
+            <#if "MILES" == result.unit.name()>
+              Calculated negative splits for your optimal race in minutes and seconds per mile:
+            <#else>
+              Calculated negative splits for your optimal race in minutes and seconds per kilometer:
+            </#if>
+          </caption>
         </p>
         <div class="wrapper">
           <table role="grid" aria-labelledby="table-splits-caption">
