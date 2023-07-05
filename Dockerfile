@@ -1,4 +1,4 @@
-ARG runtime_base_tag=3.17
+ARG runtime_base_tag=3.18
 
 FROM alpine:${runtime_base_tag} AS base
 USER root
