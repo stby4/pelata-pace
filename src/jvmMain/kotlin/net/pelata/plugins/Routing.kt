@@ -13,7 +13,7 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.*
-import java.time.ZonedDateTime
+import java.io.*
 
 fun Application.configureRouting() {
     install(StatusPages) {
@@ -47,7 +47,9 @@ fun Application.configureRouting() {
 
     routing {
         route("/") { get { call.respondRedirect("/pace", true) } }
-        // Static plugin. Try to access `/static/index.html`
-        static("/static") { resources("static") }
+        // Static plugin.
+        staticFiles("/static", File("static")) {
+            exclude { file -> file.path.contains("txt") }
+        }
     }
 }
