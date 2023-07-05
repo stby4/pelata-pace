@@ -13,19 +13,6 @@ import org.w3c.dom.events.KeyboardEvent
 const val MIN_INPUT_LENGTH = 0
 const val MAX_INPUT_LENGTH = 2
 
-fun lockForm(form: Element, disable: Boolean) {
-    val formElements = form.querySelectorAll("input")
-    for (i in 0..formElements.length - 1) {
-        val inputElement = formElements.item(i) as HTMLInputElement
-        if (disable) {
-            inputElement.setAttribute("disabled", "disabled")
-            form.setAttribute("disabled", "disabled")
-        } else {
-            inputElement.removeAttribute("disabled")
-            form.removeAttribute("disabled")
-        }
-    }
-}
 
 fun formSubmit(form: Element?) {
     form?.addEventListener(
@@ -34,8 +21,6 @@ fun formSubmit(form: Element?) {
                 it.preventDefault()
 
                 val target = it.target as HTMLFormElement
-                // prevent double submit
-                lockForm(form, true)
 
                 val action = target.action
 
@@ -67,9 +52,6 @@ fun formSubmit(form: Element?) {
                 if (0 < time) {
                     time = floor(time * 1000) / 1000
                     window.location.assign("$action?distance=${distance}&unit=${unit}&time=${time}")
-                } else {
-                    // unlock form and allow new inputs
-                    lockForm(form, false)
                 }
             }
     )
