@@ -47,9 +47,8 @@ fun Application.configureRouting() {
 
     routing {
         route("/") { get { call.respondRedirect("/pace", true) } }
-        // Static plugin.
-        staticFiles("/static", File("static")) {
-            exclude { file -> file.path.contains("txt") }
+        staticResources("/static", "static")  {
+            exclude { url -> url.path.contains("txt") }
         }
     }
 }
