@@ -1,8 +1,9 @@
 package net.pelata
 
-import kotlin.test.*
-import net.pelata.features.pace.model.*
+import net.pelata.features.pace.model.Split
 import net.pelata.units.Distance
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class SplitTest {
 

@@ -1,15 +1,14 @@
 package net.pelata.features.pace.controller
 
-import io.konform.validation.*
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.freemarker.*
-import io.ktor.server.plugins.*
+import io.konform.validation.Valid
+import io.ktor.server.application.Application
+import io.ktor.server.application.call
+import io.ktor.server.freemarker.FreeMarkerContent
 import io.ktor.server.plugins.requestvalidation.RequestValidationException
-import io.ktor.server.request.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
-import io.ktor.util.*
+import io.ktor.server.response.respond
+import io.ktor.server.routing.get
+import io.ktor.server.routing.route
+import io.ktor.server.routing.routing
 import net.pelata.features.pace.data.Form
 import net.pelata.features.pace.data.PaceRequest
 import net.pelata.features.pace.data.Result
@@ -17,22 +16,20 @@ import net.pelata.features.pace.data.SplitTime
 import net.pelata.features.pace.data.validatePaceRequest
 import net.pelata.features.pace.model.Split
 import net.pelata.units.Distance
-import kotlin.math.floor
 import kotlin.math.ceil
+import kotlin.math.floor
 
 const val DEFAULT_DISTANCE = 5.0
 const val IS_FAST_THRESHOLD = 18.0
 
 @Suppress("LongMethod")
 fun Application.paceEndpoint() {
-
     routing() {
-
         val content =
-                mutableMapOf<String, Any?>(
-                        "form" to null,
-                        "result" to null
-                )
+            mutableMapOf<String, Any?>(
+                "form" to null,
+                "result" to null
+            )
 
         route("/pace") {
             get {
@@ -48,14 +45,14 @@ fun Application.paceEndpoint() {
             get {
                 try {
                     val distance =
-                            (call.request.queryParameters["distance"]!!.filterNot { it == ',' })
-                                    .toDouble()
+                        (call.request.queryParameters["distance"]!!.filterNot { it == ',' })
+                            .toDouble()
                     val time =
-                            (call.request.queryParameters["time"]!!.filterNot { it == ',' })
-                                    .toDouble()
+                        (call.request.queryParameters["time"]!!.filterNot { it == ',' })
+                            .toDouble()
                     val unit = Distance.valueOf(call.request.queryParameters["unit"] ?: Distance.KILOMETERS.name)
 
-                    val hours = if(time > 60.0) floor(time/60).toInt() else 0
+                    val hours = if (time > 60.0) floor(time / 60).toInt() else 0
                     val minutes = floor(time - hours * 60).toInt()
                     val seconds = ceil((time - floor(time)) * 60).toInt()
 
@@ -65,11 +62,11 @@ fun Application.paceEndpoint() {
                     if (validationResult is Valid) {
                         val split = Split(distance, time, unit)
                         val splits =
-                                buildList() {
-                                    for (i in 1..10) {
-                                        add(split.negativeSplits(i / 100.0))
-                                    }
+                            buildList() {
+                                for (i in 1..10) {
+                                    add(split.negativeSplits(i / 100.0))
                                 }
+                            }
 
                         val distances = split.distances()
                         val averagePace = SplitTime(split.averagePace)
@@ -77,7 +74,7 @@ fun Application.paceEndpoint() {
                         val isFast = split.averageSpeedKmh > IS_FAST_THRESHOLD
 
                         val resultData =
-                                Result(unit, averagePace, averageSpeed, distances, splits, isFast)
+                            Result(unit, averagePace, averageSpeed, distances, splits, isFast)
 
                         val formData = Form(distance, hours, minutes, seconds, unit)
 
@@ -96,7 +93,7 @@ fun Application.paceEndpoint() {
                         val formData = Form(distance, hours, minutes, seconds, unit, errorMap)
 
                         content.put("form", formData)
-                        
+
                         call.respond(FreeMarkerContent("result.ftl", content))
                     }
                 } catch (e: NumberFormatException) {
