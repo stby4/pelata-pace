@@ -9,7 +9,7 @@ plugins {
     kotlin("multiplatform") version "1.9.0"
     application
     id("io.ktor.plugin") version "2.3.2"
-    id("io.gitlab.arturbosch.detekt") version "1.23.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.1"
 }
 
 group = "net.pelata"
