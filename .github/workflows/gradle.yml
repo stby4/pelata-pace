@@ -36,6 +36,9 @@ jobs:
     - name: Run detekt and unit tests
       run: ./gradlew check
 
+    - name: Run ktlint check
+      run: ./gradlew ktlintCheck
+
   build:
 
     runs-on: ubuntu-latest
