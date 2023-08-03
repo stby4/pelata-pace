@@ -1,7 +1,8 @@
 package net.pelata
 
 import net.pelata.features.pace.data.SplitTime
-import kotlin.test.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class SplitTimeTest {
 
