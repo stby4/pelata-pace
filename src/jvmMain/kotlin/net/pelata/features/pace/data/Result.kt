@@ -1,6 +1,5 @@
 package net.pelata.features.pace.data
 
-import net.pelata.features.pace.data.SplitTime
 import net.pelata.units.Distance
 
 data class Result(
