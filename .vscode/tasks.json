@@ -45,6 +45,17 @@
             "group": {
                 "kind": "test"
             }
+        },
+        {
+            "label": "check",
+            "type": "shell",
+            "command": "./gradlew check",
+            "problemMatcher": [
+                "$gradle"
+            ],
+            "group": {
+                "kind": "test"
+            }
         }
     ]
 }
