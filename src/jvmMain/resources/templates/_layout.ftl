@@ -7,8 +7,8 @@
     <head>
         <meta charset="utf-8">
         <title>Pelata</title>
-        <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
-        <link rel="icon" type="image/png" href="/static/favicon.png">
+        <link rel="icon" type="image/svg+xml" href="/static/pelatafav.svg">
+        <link rel="icon" type="image/png" href="/static/pelatafav.png">
         <link rel="stylesheet" href="/static/style.css">
         <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
