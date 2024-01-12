@@ -25,8 +25,8 @@ fun Application.configureRouting() {
                 HttpStatusCode.BadRequest,
                 FreeMarkerContent(
                     "error.ftl",
-                    mapOf<String, String>("message" to cause.reasons.joinToString())
-                )
+                    mapOf<String, String>("message" to cause.reasons.joinToString()),
+                ),
             )
         }
         status(HttpStatusCode.NotFound) { call, status ->
@@ -36,9 +36,9 @@ fun Application.configureRouting() {
                     "error.ftl",
                     mapOf<String, Any>(
                         "message" to "This site does not exist.",
-                        "status" to status
-                    )
-                )
+                        "status" to status,
+                    ),
+                ),
             )
         }
     }

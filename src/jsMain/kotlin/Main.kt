@@ -13,9 +13,9 @@ fun main() {
             // Register time input
             val timeInputFields =
                 document.querySelectorAll(
-                    "#paceform .input-group.time input[inputmode=\"numeric\"]"
+                    "#paceform .input-group.time input[inputmode=\"numeric\"]",
                 )
             timeInput(timeInputFields)
-        }
+        },
     )
 }

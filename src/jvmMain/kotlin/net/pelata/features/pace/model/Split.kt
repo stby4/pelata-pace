@@ -13,7 +13,7 @@ class Split(
     val distance: Double,
     val time: Double,
     val unit: Distance = Distance.KILOMETERS,
-    val precision: Int = 100
+    val precision: Int = 100,
 ) {
     val averagePace: Double by lazy { time / distance }
     val averageSpeed: Double by lazy { distance / (time / 60) }
@@ -28,7 +28,7 @@ class Split(
         val segmentsZero = ceil(distance).toInt() - 1
 
         val splitTimes =
-            buildList() {
+            buildList {
                 for (i in 0..segmentsZero) {
                     add(calcSplitPace(i, diff, averagePace, distance))
                 }
@@ -52,7 +52,7 @@ class Split(
         idx: Int,
         diff: Double,
         averagePace: Double,
-        totalDistance: Double
+        totalDistance: Double,
     ): SplitTime {
         val splitDistance =
             when (idx < totalDistance - 1) {

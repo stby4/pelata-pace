@@ -5,7 +5,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class SplitTimeTest {
-
     @Test
     fun test30Secs() {
         val s = SplitTime(0.5)

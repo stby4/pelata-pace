@@ -1,16 +1,16 @@
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
 
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
-val konform_version: String by project
+val ktorVersion: String by project
+val kotlinVersion: String by project
+val logbackVersion: String by project
+val konformVersion: String by project
 
 plugins {
     kotlin("multiplatform") version "1.9.22"
     application
     id("io.ktor.plugin") version "2.3.7"
     id("io.gitlab.arturbosch.detekt") version "1.23.4"
-    id("org.jlleitschuh.gradle.ktlint") version "11.6.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
 }
 
 group = "net.pelata"
@@ -53,25 +53,25 @@ kotlin {
         val commonMain by getting
         val jvmMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-freemarker:$ktor_version")
-                implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-call-logging-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-default-headers-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-conditional-headers-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-compression-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-host-common-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-status-pages-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
-                implementation("io.ktor:ktor-server-request-validation-jvm:$ktor_version")
-                implementation("ch.qos.logback:logback-classic:$logback_version")
-                implementation("io.konform:konform-jvm:$konform_version")
+                implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-freemarker:$ktorVersion")
+                implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-call-logging-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-default-headers-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-conditional-headers-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-compression-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-host-common-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-status-pages-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-request-validation-jvm:$ktorVersion")
+                implementation("ch.qos.logback:logback-classic:$logbackVersion")
+                implementation("io.konform:konform-jvm:$konformVersion")
             }
         }
         val jvmTest by getting {
             dependencies {
-                implementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
-                implementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+                implementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
+                implementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
             }
         }
         val jsMain by getting
@@ -81,11 +81,12 @@ kotlin {
 // include JS artifacts in production fat jar
 tasks.getByName<Jar>("shadowJar") {
     val isDevelopment: Boolean = project.ext.has("development")
-    val taskName = if (isDevelopment) {
-        "jsBrowserDevelopmentWebpack"
-    } else {
-        "jsBrowserProductionWebpack"
-    }
+    val taskName =
+        if (isDevelopment) {
+            "jsBrowserDevelopmentWebpack"
+        } else {
+            "jsBrowserProductionWebpack"
+        }
     val webpackTask = tasks.getByName<KotlinWebpack>(taskName)
     dependsOn(webpackTask) // make sure JS gets compiled first
     from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
@@ -94,11 +95,12 @@ tasks.getByName<Jar>("shadowJar") {
 // include JS artifacts in dev jar
 tasks.getByName<Jar>("jvmJar") {
     val isDevelopment: Boolean = project.ext.has("development")
-    val taskName = if (isDevelopment) {
-        "jsBrowserDevelopmentWebpack"
-    } else {
-        "jsBrowserProductionWebpack"
-    }
+    val taskName =
+        if (isDevelopment) {
+            "jsBrowserDevelopmentWebpack"
+        } else {
+            "jsBrowserProductionWebpack"
+        }
     val webpackTask = tasks.getByName<KotlinWebpack>(taskName)
     dependsOn(webpackTask) // make sure JS gets compiled first
     // from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR

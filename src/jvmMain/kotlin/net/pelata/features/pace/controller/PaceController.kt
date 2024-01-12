@@ -24,11 +24,11 @@ const val IS_FAST_THRESHOLD = 18.0
 
 @Suppress("LongMethod")
 fun Application.paceEndpoint() {
-    routing() {
+    routing {
         val content =
             mutableMapOf<String, Any?>(
                 "form" to null,
-                "result" to null
+                "result" to null,
             )
 
         route("/pace") {
@@ -62,7 +62,7 @@ fun Application.paceEndpoint() {
                     if (validationResult is Valid) {
                         val split = Split(distance, time, unit)
                         val splits =
-                            buildList() {
+                            buildList {
                                 for (i in 1..10) {
                                     add(split.negativeSplits(i / 100.0))
                                 }
@@ -84,11 +84,12 @@ fun Application.paceEndpoint() {
                         call.respond(FreeMarkerContent("result.ftl", content))
                     } else {
                         val errors = validationResult.errors
-                        val errorMap = buildMap {
-                            for (error in errors) {
-                                put(error.dataPath, error.message)
+                        val errorMap =
+                            buildMap {
+                                for (error in errors) {
+                                    put(error.dataPath, error.message)
+                                }
                             }
-                        }
 
                         val formData = Form(distance, hours, minutes, seconds, unit, errorMap)
 

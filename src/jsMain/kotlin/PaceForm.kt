@@ -52,7 +52,7 @@ fun formSubmit(form: Element?) {
                 time = floor(time * 1000) / 1000
                 window.location.assign("$action?distance=$distance&unit=$unit&time=$time")
             }
-        }
+        },
     )
 }
 
@@ -79,7 +79,7 @@ fun timeInput(timeInputFields: NodeList) {
                     else -> {}
                 }
             },
-            false
+            false,
         )
 
         field?.addEventListener(
@@ -110,7 +110,7 @@ fun timeInput(timeInputFields: NodeList) {
                     }
                 }
             },
-            false
+            false,
         )
     }
 }

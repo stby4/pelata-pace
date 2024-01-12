@@ -6,7 +6,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class SplitTest {
-
     @Test
     fun testAveragePace() {
         val split = Split(10.0, 60.0)

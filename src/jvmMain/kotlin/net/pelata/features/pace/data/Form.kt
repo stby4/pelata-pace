@@ -12,5 +12,5 @@ data class Form(
     val minutes: Int = DEFAULT_MINUTES,
     val seconds: Int = DEFAULT_SECONDS,
     val unit: Distance = Distance.KILOMETERS,
-    val errors: Map<String, String>? = null
+    val errors: Map<String, String>? = null,
 )
