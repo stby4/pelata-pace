@@ -9,7 +9,7 @@ plugins {
     kotlin("multiplatform") version "1.9.22"
     application
     id("io.ktor.plugin") version "2.3.8"
-    id("io.gitlab.arturbosch.detekt") version "1.23.4"
+    id("io.gitlab.arturbosch.detekt") version "1.23.5"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
 }
 
