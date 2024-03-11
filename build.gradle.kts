@@ -6,7 +6,7 @@ val logbackVersion: String by project
 val konformVersion: String by project
 
 plugins {
-    kotlin("multiplatform") version "1.9.22"
+    kotlin("multiplatform") version "1.9.23"
     application
     id("io.ktor.plugin") version "2.3.9"
     id("io.gitlab.arturbosch.detekt") version "1.23.5"
