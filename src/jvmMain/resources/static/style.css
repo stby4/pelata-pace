@@ -145,6 +145,7 @@ table tr:nth-child(odd) {
 
 table td {
     padding: .4em;
+    font-variant-numeric: tabular-nums;
 }
 
 /* form */
@@ -180,7 +181,7 @@ input:focus, .input:focus {
 }
 
 input[inputmode="numeric"], input[inputmode="decimal"] {
-    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-variant-numeric: tabular-nums;
     text-align: end;
 }
 
