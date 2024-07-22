@@ -34,7 +34,7 @@ detekt {
 }
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
     targets {
         jvm {
             withJava()

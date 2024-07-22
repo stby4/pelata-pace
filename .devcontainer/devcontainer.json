@@ -8,8 +8,8 @@
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/kotlin-sdkman:2": {
 			"version": "latest",
-			"jdkVersion": "17",
-			"jdkDistro": "tem"
+			"jdkVersion": "21",
+			"jdkDistro": "zulu"
 		},
         "ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/devcontainers/features/common-utils:2": {
