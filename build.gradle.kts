@@ -10,7 +10,7 @@ plugins {
     application
     id("io.ktor.plugin") version "2.3.12"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
 }
 
 group = "net.pelata"
