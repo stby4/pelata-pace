@@ -6,11 +6,11 @@ val logbackVersion: String by project
 val konformVersion: String by project
 
 plugins {
-    kotlin("multiplatform") version "2.0.0"
+    kotlin("multiplatform") version "2.0.20"
     application
     id("io.ktor.plugin") version "2.3.12"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
-    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
 }
 
 group = "net.pelata"
