@@ -25,8 +25,6 @@ This project has been developed with Visual Studio Code on Ubuntu 22.04. Other I
 > This option is recommended! It requires some additional tools, but is virtually care-free afterwards. The required development environment is installed and maintained automatically, and does not interfere with other tools.
 
 1. Install [Visual Studio Code](https://code.visualstudio.com/) with the following extensions:
-   - [Kotlin](https://marketplace.visualstudio.com/items?itemName=fwcd.kotlin).
-   - [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
    - [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack).
 1. Install and start [Colima](https://github.com/abiosoft/colima?tab=readme-ov-file#installation) for Linux or macOS, or [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Windows. When using Colima, make sure to also install the docker runtime (`brew install docker`).
 1. Open the cloned repository in VS Code, and let it start the Dev Container when it asks.
@@ -42,16 +40,16 @@ This project has been developed with Visual Studio Code on Ubuntu 22.04. Other I
    $ curl -s "https://get.sdkman.io" | bash
    $ source "$HOME/.sdkman/bin/sdkman-init.sh"
    ```
-1. Make sure that v17 of OpenJDK is installed:
+1. Make sure that v21 of Zulu JDK is installed:
    ```bash
    $ java --version
-   openjdk 17.0.6 2023-01-17
-   OpenJDK Runtime Environment Temurin-17.0.6+10 (build 17.0.6+10)
-   OpenJDK 64-Bit Server VM Temurin-17.0.6+10 (build 17.0.6+10, mixed mode, sharing)
+   openjdk 21.0.5 2024-10-15 LTS
+   OpenJDK Runtime Environment Zulu21.38+21-CA (build 21.0.5+11-LTS)
+   OpenJDK 64-Bit Server VM Zulu21.38+21-CA (build 21.0.5+11-LTS, mixed mode, sharing)
    ```
-   If not, install OpenJDK 17:
+   If not, install Zulu JDK 21:
    ```bash
-   $ sdk install java 17.0.6-tem
+   $ sdk install java 21.0.5-zulu
    ```
 1. Install Kotlin:
    ```bash

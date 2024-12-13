@@ -1,10 +1,10 @@
-ARG runtime_base_tag=3.18
-ARG build_base_tag=jdk17-alpine
+ARG runtime_base_tag=21-jre-headless-latest
+ARG build_base_tag=21-latest
 
-FROM alpine:${runtime_base_tag} AS base
+FROM azul/zulu-openjdk-alpine:${runtime_base_tag} AS base
 WORKDIR /app
 
-FROM gradle:${build_base_tag} AS build
+FROM azul/zulu-openjdk-alpine:${build_base_tag} AS build
 
 # RUN apk add openjdk17-jdk
 RUN apk add bash curl zip && \

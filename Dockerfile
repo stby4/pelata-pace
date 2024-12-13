@@ -1,10 +1,10 @@
-ARG runtime_base_tag=3.18
+ARG runtime_base_tag=21-jre-headless-latest
 
-FROM alpine:${runtime_base_tag} AS base
+FROM azul/zulu-openjdk-alpine:${runtime_base_tag} AS base
 USER root
 RUN adduser --disabled-password --gecos "" pelatauser
 
-RUN apk add openjdk17-jre-headless supervisor
+RUN apk add supervisor
 WORKDIR /app
 RUN chown pelatauser /app
 COPY --chown=pelatauser build/libs/net.pelata.pace-all.jar .
