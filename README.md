@@ -78,13 +78,7 @@ The project contains a task.json that makes the most important tasks easily avai
 ## Colour palette
 
 ![palette](https://user-images.githubusercontent.com/4112178/190750585-b3b4ccc4-5ff2-46a1-abfc-fb338e0741ea.svg)
-From [coolors.co](https://coolors.co/5bc0be-8783d1-0c0b1e-ffffff)
-
-The colours to be used for this website are:
-- Background: `#ffffff` White
-- Text: `#0c0b1e` Xiketic
-- Accent colour 1: `#5bc0be` Maximum Blue Green
-- Accent colour 2: `#8783d1` Middle Blue Purple
+From [coolors.co](https://coolors.co/5bc0be-8783d1-232929-eff1f1)
 
 
 
