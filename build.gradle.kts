@@ -89,7 +89,7 @@ tasks.getByName<Jar>("shadowJar") {
         }
     val webpackTask = tasks.getByName<KotlinWebpack>(taskName)
     dependsOn(webpackTask) // make sure JS gets compiled first
-    from(File(webpackTask.outputDirectory, webpackTask.mainOutputFileName)) // bring output file along into the JAR
+    from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
 }
 
 // include JS artifacts in dev jar
@@ -103,7 +103,7 @@ tasks.getByName<Jar>("jvmJar") {
         }
     val webpackTask = tasks.getByName<KotlinWebpack>(taskName)
     dependsOn(webpackTask) // make sure JS gets compiled first
-    // from(File(webpackTask.outputDirectory, webpackTask.mainOutputFileName)) // bring output file along into the JAR
+    // from(File(webpackTask.destinationDirectory, webpackTask.outputFileName)) // bring output file along into the JAR
 }
 
 tasks.getByName<JavaExec>("run") {
