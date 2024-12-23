@@ -8,7 +8,7 @@ val konformVersion: String by project
 plugins {
     kotlin("multiplatform") version "2.1.0"
     application
-    id("io.ktor.plugin") version "2.3.12"
+    id("io.ktor.plugin") version "3.0.3"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
     id("org.jlleitschuh.gradle.ktlint") version "12.1.2"
 }
@@ -53,24 +53,25 @@ kotlin {
         val commonMain by getting
         val jvmMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-core:$ktorVersion")
                 implementation("io.ktor:ktor-server-freemarker:$ktorVersion")
-                implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-call-logging-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-default-headers-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-conditional-headers-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-compression-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-host-common-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-status-pages-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-netty-jvm:$ktorVersion")
-                implementation("io.ktor:ktor-server-request-validation-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-server-call-logging:$ktorVersion")
+                implementation("io.ktor:ktor-server-default-headers:$ktorVersion")
+                implementation("io.ktor:ktor-server-conditional-headers:$ktorVersion")
+                implementation("io.ktor:ktor-server-compression:$ktorVersion")
+                implementation("io.ktor:ktor-server-host-common:$ktorVersion")
+                implementation("io.ktor:ktor-server-status-pages:$ktorVersion")
+                implementation("io.ktor:ktor-server-netty:$ktorVersion")
+                implementation("io.ktor:ktor-server-request-validation:$ktorVersion")
                 implementation("ch.qos.logback:logback-classic:$logbackVersion")
-                implementation("io.konform:konform-jvm:$konformVersion")
+                implementation("io.konform:konform:$konformVersion")
             }
         }
         val jvmTest by getting {
             dependencies {
-                implementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
+                implementation("io.ktor:ktor-server-test-host:$ktorVersion")
+                implementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
                 implementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
             }
         }
