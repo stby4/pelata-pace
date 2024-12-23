@@ -6,8 +6,6 @@
 
 Pelata is Finnish and means "Play" => This project is just my playground.
 
-✔️ Visit: https://www.pelata.net
-
 
 
 # Build status
@@ -77,7 +75,7 @@ The project contains a task.json that makes the most important tasks easily avai
 
 ## Colour palette
 
-![palette](https://user-images.githubusercontent.com/4112178/190750585-b3b4ccc4-5ff2-46a1-abfc-fb338e0741ea.svg)
+![palette](https://github.com/user-attachments/assets/15e5be29-e63c-4355-b5a8-72c7a3d3939e)
 From [coolors.co](https://coolors.co/5bc0be-8783d1-232929-eff1f1)
 
 
