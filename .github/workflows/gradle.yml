@@ -31,7 +31,7 @@ jobs:
         distribution: 'zulu'
 
     - name: Validate Gradle Wrapper
-      uses: gradle/actions/wrapper-validation@v3
+      uses: gradle/actions/wrapper-validation@v4
 
     - name: Run checks, unit tests
       run: ./gradlew check
@@ -51,7 +51,7 @@ jobs:
         distribution: 'zulu'
 
     - name: Validate Gradle Wrapper
-      uses: gradle/actions/wrapper-validation@v3
+      uses: gradle/actions/wrapper-validation@v4
 
     - name: Build with Gradle
       run: ./gradlew buildFatJar
