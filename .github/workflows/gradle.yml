@@ -31,7 +31,7 @@ jobs:
         distribution: 'zulu'
 
     - name: Validate Gradle Wrapper
-      uses: gradle/wrapper-validation-action@v2
+      uses: gradle/actions/wrapper-validation@v4
 
     - name: Run checks, unit tests
       run: ./gradlew check
@@ -51,16 +51,16 @@ jobs:
         distribution: 'zulu'
 
     - name: Validate Gradle Wrapper
-      uses: gradle/wrapper-validation-action@v2
+      uses: gradle/actions/wrapper-validation@v4
 
     - name: Build with Gradle
-      run: ./gradlew buildFatJar
+      run: ./gradlew build
 
     - name: Upload JAR
       uses: actions/upload-artifact@v4
       with:
         name: pelata-jar
-        path: build/libs/net.pelata.pace-all.jar
+        path: build/libs/net.pelata.pace-jvm-*.jar
   
   deploy:
 
@@ -69,7 +69,7 @@ jobs:
     if: github.event_name == 'push' && false
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Download JAR
       uses: actions/download-artifact@v4
