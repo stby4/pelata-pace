@@ -4,7 +4,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "./gradlew buildFatJar -x test",
+            "command": "./gradlew build",
             "problemMatcher": [
                 "$gradle"
             ],
