@@ -32,26 +32,26 @@ detekt {
 kotlin {
     jvmToolchain(21)
 
-    targets {
-        jvm {
-            compilations.all {
-                kotlinOptions {
-                    jvmTarget = "21"
-                }
-            }
-            @OptIn(ExperimentalKotlinGradlePluginApi::class)
-            binaries {
-                executable {
-                    mainClass.set("net.pelata.ApplicationKt")
-                }
+    jvm {
+        compilations.all {
+            val opts = (this as org.jetbrains.kotlin.gradle.plugin.mpp.KotlinJvmCompilation).compilerOptions
+            opts.configure {
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
             }
         }
-        js {
-            browser {
-                commonWebpackConfig {
-                    outputFileName = "main.js"
-                    outputPath = File(layout.buildDirectory.get().asFile, "processedResources/jvm/main/static")
-                }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        binaries {
+            executable {
+                mainClass.set("net.pelata.ApplicationKt")
+            }
+        }
+    }
+
+    js {
+        browser {
+            commonWebpackConfig {
+                outputFileName = "main.js"
+                outputPath = File(layout.buildDirectory.get().asFile, "processedResources/jvm/main/static")
             }
             binaries.executable()
         }
