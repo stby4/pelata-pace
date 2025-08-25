@@ -11,7 +11,7 @@ plugins {
     kotlin("multiplatform") version "2.2.0"
     id("io.ktor.plugin") version "3.2.1" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
-    id("org.jlleitschuh.gradle.ktlint") version "12.3.0"
+    id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
 }
 
 group = "net.pelata"
