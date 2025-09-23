@@ -73,8 +73,8 @@ class ApplicationTest {
                     assertEquals(HttpStatusCode.BadRequest, status)
                     assertContains(bodyAsText(), "Ooops")
                 }
-                client.post("/pace?time=10,000&distance=1,000").apply {
-                    assertEquals(HttpStatusCode.MethodNotAllowed, status)
-                }
+            client.post("/pace?time=10,000&distance=1,000").apply {
+                assertEquals(HttpStatusCode.MethodNotAllowed, status)
+            }
         }
 }
