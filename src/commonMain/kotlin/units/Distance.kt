@@ -1,7 +1,7 @@
 package net.pelata.units
 
 enum class Distance(
-    val short: String
+    val short: String,
 ) {
     KILOMETERS("km"),
     MILES("mi"),
