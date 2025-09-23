@@ -8,7 +8,7 @@ val logbackVersion: String by project
 val konformVersion: String by project
 
 plugins {
-    kotlin("multiplatform") version "2.2.0"
+    kotlin("multiplatform") version "2.2.20"
     id("io.ktor.plugin") version "3.3.0" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
     id("org.jlleitschuh.gradle.ktlint") version "12.3.0"
