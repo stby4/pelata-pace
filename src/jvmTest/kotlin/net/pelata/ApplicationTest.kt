@@ -29,48 +29,52 @@ class ApplicationTest {
             // client.get("/").apply {
             //     assertEquals(HttpStatusCode.MovedPermanently, status)
             // }
-            client.get("/pace/result") {
-                url {
-                    parameters.append("distance", "120.78")
-                    parameters.append("time", "30.5")
-                    parameters.append("unit", "KILOMETERS")
+            client
+                .get("/pace/result") {
+                    url {
+                        parameters.append("distance", "120.78")
+                        parameters.append("time", "30.5")
+                        parameters.append("unit", "KILOMETERS")
+                    }
+                }.apply {
+                    assertEquals(HttpStatusCode.OK, status)
+                    assertContains(bodyAsText(), "That's equal to an incredible speed of 237.6")
                 }
-            }.apply {
-                assertEquals(HttpStatusCode.OK, status)
-                assertContains(bodyAsText(), "That's equal to an incredible speed of 237.6")
-            }
-            client.get("/pace/result") {
-                url {
-                    parameters.append("distance", "10000.1")
-                    parameters.append("time", "1000")
-                    parameters.append("unit", "MILES")
+            client
+                .get("/pace/result") {
+                    url {
+                        parameters.append("distance", "10000.1")
+                        parameters.append("time", "1000")
+                        parameters.append("unit", "MILES")
+                    }
+                }.apply {
+                    assertEquals(HttpStatusCode.OK, status)
+                    assertContains(bodyAsText(), "Must be at most '1000.0'.")
                 }
-            }.apply {
-                assertEquals(HttpStatusCode.OK, status)
-                assertContains(bodyAsText(), "Must be at most '1000.0'.")
-            }
-            client.get("/pace/result") {
-                url {
-                    parameters.append("distance", "0")
-                    parameters.append("time", "0")
-                    parameters.append("unit", "MILES")
+            client
+                .get("/pace/result") {
+                    url {
+                        parameters.append("distance", "0")
+                        parameters.append("time", "0")
+                        parameters.append("unit", "MILES")
+                    }
+                }.apply {
+                    assertEquals(HttpStatusCode.OK, status)
+                    assertContains(bodyAsText(), "Must be at least '1.0'.")
                 }
-            }.apply {
-                assertEquals(HttpStatusCode.OK, status)
-                assertContains(bodyAsText(), "Must be at least '1.0'.")
-            }
-            client.get("/pace/result") {
-                url {
-                    parameters.append("distance", "1")
-                    parameters.append("time", "1")
-                    parameters.append("unit", "FEET")
+            client
+                .get("/pace/result") {
+                    url {
+                        parameters.append("distance", "1")
+                        parameters.append("time", "1")
+                        parameters.append("unit", "FEET")
+                    }
+                }.apply {
+                    assertEquals(HttpStatusCode.BadRequest, status)
+                    assertContains(bodyAsText(), "Ooops")
                 }
-            }.apply {
-                assertEquals(HttpStatusCode.BadRequest, status)
-                assertContains(bodyAsText(), "Ooops")
-            }
-            client.post("/pace?time=10,000&distance=1,000").apply {
-                assertEquals(HttpStatusCode.MethodNotAllowed, status)
-            }
+                client.post("/pace?time=10,000&distance=1,000").apply {
+                    assertEquals(HttpStatusCode.MethodNotAllowed, status)
+                }
         }
 }
