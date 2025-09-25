@@ -107,4 +107,7 @@ fun Application.paceEndpoint() {
     }
 }
 
-data class PaceRequest(val distance: Double, val time: Double)
+data class PaceRequest(
+    val distance: Double,
+    val time: Double,
+)

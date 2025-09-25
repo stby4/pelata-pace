@@ -10,7 +10,10 @@ const val MAX_DISTANCE = 1000.0
 const val MIN_TIME = 1.0
 const val MAX_TIME = 10000.0
 
-data class PaceRequest(val distance: Double, val time: Double)
+data class PaceRequest(
+    val distance: Double,
+    val time: Double,
+)
 
 val validatePaceRequest =
     Validation<PaceRequest> {

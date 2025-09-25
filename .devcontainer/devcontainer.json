@@ -11,25 +11,28 @@
 			"jdkVersion": "21",
 			"jdkDistro": "zulu"
 		},
-        "ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"configureZshAsDefaultShell": true
 		}
 	},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8080],
-
+	"forwardPorts": [
+		8080
+	],
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
-		  // Add the IDs of extensions you want installed when the container is created.
-		  "extensions": [
-			"dcortes92.FreeMarker",
-			"vscjava.vscode-gradle",
-			"fwcd.kotlin"
-		  ]
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dcortes92.FreeMarker",
+				"vscjava.vscode-gradle",
+				"fwcd.kotlin"
+			]
 		}
-	  }
+	},
+	"mounts": [
+		"source=pelata-pace-build,target=/workspaces/pelata-pace/build,type=volume"
+	]
 }
