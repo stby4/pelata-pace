@@ -9,7 +9,7 @@ val konformVersion: String by project
 
 plugins {
     kotlin("multiplatform") version "2.2.21"
-    id("io.ktor.plugin") version "3.3.0" apply false
+    id("io.ktor.plugin") version "3.3.2" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
     id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
 }
