@@ -38,16 +38,16 @@ This project has been developed with Visual Studio Code on Ubuntu 22.04. Other I
    $ curl -s "https://get.sdkman.io" | bash
    $ source "$HOME/.sdkman/bin/sdkman-init.sh"
    ```
-1. Make sure that v21 of Zulu JDK is installed:
+1. Make sure that v25 of Zulu JDK is installed:
    ```bash
    $ java --version
-   openjdk 21.0.5 2024-10-15 LTS
-   OpenJDK Runtime Environment Zulu21.38+21-CA (build 21.0.5+11-LTS)
-   OpenJDK 64-Bit Server VM Zulu21.38+21-CA (build 21.0.5+11-LTS, mixed mode, sharing)
+   openjdk 26 2026-03-17
+   OpenJDK Runtime Environment Zulu26.28+61-CRaC-CA (build 26+35)
+   OpenJDK 64-Bit Server VM Zulu26.28+61-CRaC-CA (build 26+35, mixed mode, sharing)
    ```
-   If not, install Zulu JDK 21:
+   If not, install Zulu JDK 26:
    ```bash
-   $ sdk install java 21.0.5-zulu
+   $ sdk install java 25.0.3-zulu
    ```
 1. Install Kotlin:
    ```bash

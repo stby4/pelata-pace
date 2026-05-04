@@ -30,13 +30,13 @@ detekt {
 }
 
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 
     jvm {
         compilations.all {
             val opts = (this as org.jetbrains.kotlin.gradle.plugin.mpp.KotlinJvmCompilation).compilerOptions
             opts.configure {
-                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+                jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_25)
             }
         }
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
