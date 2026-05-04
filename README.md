@@ -41,9 +41,9 @@ This project has been developed with Visual Studio Code on Ubuntu 22.04. Other I
 1. Make sure that v25 of Zulu JDK is installed:
    ```bash
    $ java --version
-   openjdk 26 2026-03-17
-   OpenJDK Runtime Environment Zulu26.28+61-CRaC-CA (build 26+35)
-   OpenJDK 64-Bit Server VM Zulu26.28+61-CRaC-CA (build 26+35, mixed mode, sharing)
+   openjdk 25.0.3 2026-04-21 LTS
+   OpenJDK Runtime Environment Zulu25.34+17-CA (build 25.0.3+9-LTS)
+   OpenJDK 64-Bit Server VM Zulu25.34+17-CA (build 25.0.3+9-LTS, mixed mode, sharing)
    ```
    If not, install Zulu JDK 26:
    ```bash
