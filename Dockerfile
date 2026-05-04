@@ -1,4 +1,4 @@
-ARG runtime_base_tag=21-jre-headless-latest
+ARG runtime_base_tag=25-jre-headless-latest
 
 FROM azul/zulu-openjdk-alpine:${runtime_base_tag} AS base
 USER root

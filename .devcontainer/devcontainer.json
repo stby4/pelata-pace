@@ -1,38 +1,36 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
-	"name": "Pelata-devcontainer",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers-extra/features/kotlin-sdkman:2": {
-			"version": "latest",
-			"jdkVersion": "21",
-			"jdkDistro": "zulu"
-		},
-		"ghcr.io/devcontainers/features/github-cli:1": {},
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"configureZshAsDefaultShell": true
-		}
-	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [
-		8080
-	],
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"dcortes92.FreeMarker",
-				"vscjava.vscode-gradle",
-				"fwcd.kotlin"
-			]
-		}
-	},
-	"mounts": [
-		"source=pelata-pace-build,target=/workspaces/pelata-pace/build,type=volume"
-	]
+  "name": "Pelata-devcontainer",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers-extra/features/kotlin-sdkman:2": {
+      "version": "latest",
+      "jdkVersion": "25",
+      "jdkDistro": "zulu"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": true
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8080],
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "dcortes92.FreeMarker",
+        "vscjava.vscode-gradle",
+        "fwcd.kotlin"
+      ]
+    }
+  },
+  "mounts": [
+    "source=pelata-pace-build,target=/workspaces/pelata-pace/build,type=volume"
+  ]
 }
