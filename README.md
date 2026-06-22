@@ -45,7 +45,7 @@ This project has been developed with Visual Studio Code on Ubuntu 22.04. Other I
    OpenJDK Runtime Environment Zulu25.34+17-CA (build 25.0.3+9-LTS)
    OpenJDK 64-Bit Server VM Zulu25.34+17-CA (build 25.0.3+9-LTS, mixed mode, sharing)
    ```
-   If not, install Zulu JDK 26:
+   If not, install Zulu JDK 25:
    ```bash
    $ sdk install java 25.0.3-zulu
    ```
